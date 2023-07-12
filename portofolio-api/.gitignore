@@ -364,7 +364,7 @@ healthchecksdb
 
 # Project's xml-files
 *.xml
-.DS_Store
+**/.DS_Store
 Src/.DS_Store
 
 # Umbraco
