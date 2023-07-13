@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>SemSnel.Portofolio.Domain</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Entities\" />
+      <Folder Include="Common\Messages\" />
+      <Folder Include="Common\Monads\ErrorOr\" />
+      <Folder Include="Common\ValueObjects\" />
+      <Folder Include="Content\" />
+    </ItemGroup>
+
+</Project>
