@@ -32,12 +32,18 @@ public class SwaggerDefaultValues : IOperationFilter
             parameter.Required |= description.IsRequired;
         }
         
-        // remove version parameter from path
-        if (!operation.Parameters.Any(p => p.Name == "version")) 
-            return;
+        RemoveVersionParameters(operation);
+    }
+    
+    private void RemoveVersionParameters(OpenApiOperation operation)
+    {
+        var versionParameterNames = new[]
+        {
+            "version",
+            "x-api-version",
+            "apiVersion"
+        };
         
-        var versionParameter = operation.Parameters.First(p => p.Name == "version");
-
-        operation.Parameters.Remove(versionParameter);
+        operation.Parameters = operation.Parameters?.Where(p => !versionParameterNames.Contains(p.Name)).ToList();
     }
 }
