@@ -11,4 +11,8 @@ public class WeatherForecastDto
     public int TemperatureF { get; init;}
 
     public string? Summary { get; init; }
+    
+    public DateTime CreatedOn { get; init; }
+    
+    public DateTime LastModifiedOn { get; init; }
 }
