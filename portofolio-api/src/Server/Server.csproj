@@ -21,6 +21,7 @@
     <ItemGroup>
       <Folder Include="Common\Authentication\" />
       <Folder Include="Common\Authorisation\" />
+      <Folder Include="Common\MediaTypeFormatters\" />
     </ItemGroup>
 
     <ItemGroup>
