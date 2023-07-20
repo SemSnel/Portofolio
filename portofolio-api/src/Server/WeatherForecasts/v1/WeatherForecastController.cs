@@ -5,6 +5,7 @@ using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
+using SemSnel.Portofolio.Server.Common.Monads;
 
 namespace SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
@@ -32,17 +33,7 @@ public class WeatherForecastController : ControllerBase
     {
         var errorOr = await _mediator.Send(query);
         
-        return  errorOr.Match<IActionResult>(
-            forecasts => Ok(forecasts),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+        return  errorOr.ToOkActionResult();
     }
     
     [MapToApiVersion("1.0")]
@@ -55,18 +46,8 @@ public class WeatherForecastController : ControllerBase
     public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsBySqlQuery query)
     {
         var errorOr = await _mediator.Send(query);
-        
-        return  errorOr.Match<IActionResult>(
-            forecasts => Ok(forecasts),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+
+        return errorOr.ToOkActionResult();
     }
     
     [MapToApiVersion("1.0")]
@@ -76,17 +57,7 @@ public class WeatherForecastController : ControllerBase
     {
         var errorOr = await _mediator.Send(command);
         
-        return  errorOr.Match<IActionResult>(
-            forecast => CreatedAtAction(nameof(Get), new { id = forecast.Value }, forecast),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+        return  errorOr.ToCreatedActionResult(nameof(Get), new { id = errorOr.Value });
     }
     
     [MapToApiVersion("1.0")]
@@ -101,18 +72,8 @@ public class WeatherForecastController : ControllerBase
         command.Id = id;
         
         var errorOr = await _mediator.Send(command);
-        
-        return  errorOr.Match<IActionResult>(
-            forecast => Ok(forecast.Value),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+
+        return errorOr.ToNoContentActionResult();
     }
 
     [MapToApiVersion("1.0")]
@@ -122,16 +83,6 @@ public class WeatherForecastController : ControllerBase
     {
         var errorOr = await _mediator.Send(query);
         
-        return  errorOr.Match<IActionResult>(
-            fileDto => File(fileDto.Content, "text/csv", fileDto.Name),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+        return  errorOr.ToFileContentResult();
     }
 }

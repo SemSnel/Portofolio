@@ -10,9 +10,4 @@ public static class ConfigureServices
         
         return services;
     }
-    
-    public static IApplicationBuilder UseMapping(this IApplicationBuilder app)
-    {
-        return app;
-    }
 }
