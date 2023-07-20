@@ -24,7 +24,10 @@ public static class ConfigureServices
             {
                 var connectionString = configuration.GetConnectionString("DefaultConnection");
                 
-                options.UseSqlite(connectionString);
+                options.UseSqlite(connectionString, builder =>
+                {
+                    builder.MigrationsAssembly("SemSnel.Portofolio.Migrations");
+                });
             });
     }
 }
