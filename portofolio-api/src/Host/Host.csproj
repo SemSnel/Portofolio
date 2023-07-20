@@ -7,6 +7,7 @@
         <InvariantGlobalization>true</InvariantGlobalization>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <RootNamespace>SemSnel.Portofolio.Host</RootNamespace>
+        <UserSecretsId>05fb7e03-2529-4e41-807c-e484223743c8</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

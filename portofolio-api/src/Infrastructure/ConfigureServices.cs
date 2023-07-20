@@ -7,6 +7,7 @@ using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Initialisers;
+using SemSnel.Portofolio.Infrastructure.Common.Validations;
 
 namespace SemSnel.Portofolio.Infrastructure;
 
@@ -20,6 +21,7 @@ public static class ConfigureServices
         return services
             .AddDatabaseContext(configuration)
             .AddFileServices(configuration)
+            .AddValidationServices(configuration)
             .AddMessageBroker(configuration)
             .AddDateTimeServices(configuration)
             .AddMediator(configuration)

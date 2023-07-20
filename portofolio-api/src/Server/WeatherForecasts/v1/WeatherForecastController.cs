@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
+using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
@@ -70,6 +71,7 @@ public class WeatherForecastController : ControllerBase
     
     [MapToApiVersion("1.0")]
     [HttpPost]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
     {
         var errorOr = await _mediator.Send(command);
@@ -86,7 +88,32 @@ public class WeatherForecastController : ControllerBase
                     _ => StatusCode(StatusCodes.Status500InternalServerError)
             });
     }
-
+    
+    [MapToApiVersion("1.0")]
+    [HttpPut("{id:guid}")]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateWeatherForecastsCommand command)
+    {
+        command.Id = id;
+        
+        var errorOr = await _mediator.Send(command);
+        
+        return  errorOr.Match<IActionResult>(
+            forecast => Ok(forecast.Value),
+            errors => errors.First().Type switch
+            {
+                ErrorType.NotFound => NotFound(),
+                ErrorType.Conflict => Conflict(),
+                ErrorType.Unauthorized => Unauthorized(),
+                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
+                ErrorType.Validation => BadRequest(errors.First().Description),
+                    _ => StatusCode(StatusCodes.Status500InternalServerError)
+            });
+    }
 
     [MapToApiVersion("1.0")]
     [Produces("text/csv")]
@@ -96,7 +123,7 @@ public class WeatherForecastController : ControllerBase
         var errorOr = await _mediator.Send(query);
         
         return  errorOr.Match<IActionResult>(
-            fileDto => File(fileDto.Content, "text/csv", "weather-forecasts.csv"),
+            fileDto => File(fileDto.Content, "text/csv", fileDto.Name),
             errors => errors.First().Type switch
             {
                 ErrorType.NotFound => NotFound(),

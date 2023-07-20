@@ -1,7 +1,9 @@
-﻿FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/runtime:7.0.9 AS base
 WORKDIR /app
+EXPOSE 81
+EXPOSE 444
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0.9 AS build
 WORKDIR /src
 COPY ["src/Worker/Worker.csproj", "src/Worker/"]
 COPY ["src/Application/Application.csproj", "src/Application/"]
