@@ -22,7 +22,9 @@ public static class ConfigureServices
             .AddTransient<IAppContextInitialiser, AppContextInitialiser>()
             .AddDbContext<IAppDatabaseContext, AppDatabaseContext>(options =>
             {
-                options.UseInMemoryDatabase("SemSnel.Portofolio");
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                
+                options.UseSqlite(connectionString);
             });
     }
 }

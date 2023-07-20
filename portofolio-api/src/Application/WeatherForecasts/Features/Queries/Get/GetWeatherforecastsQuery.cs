@@ -22,6 +22,7 @@ public sealed class
 
     public async Task<ErrorOr<IEnumerable<WeatherForecastDto>>> Handle(GetWeatherforecastsQuery request, CancellationToken cancellationToken)
     {
+
         var forecasts = await _readRepository
             .Get()
             .ProjectTo<WeatherForecastDto>(_mapper)

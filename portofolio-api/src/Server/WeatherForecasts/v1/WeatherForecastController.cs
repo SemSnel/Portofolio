@@ -45,6 +45,30 @@ public class WeatherForecastController : ControllerBase
     }
     
     [MapToApiVersion("1.0")]
+    [HttpGet("sql")]
+    [ProducesResponseType(typeof(IEnumerable<WeatherForecastDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsBySqlQuery query)
+    {
+        var errorOr = await _mediator.Send(query);
+        
+        return  errorOr.Match<IActionResult>(
+            forecasts => Ok(forecasts),
+            errors => errors.First().Type switch
+            {
+                ErrorType.NotFound => NotFound(),
+                ErrorType.Conflict => Conflict(),
+                ErrorType.Unauthorized => Unauthorized(),
+                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
+                ErrorType.Validation => BadRequest(errors.First().Description),
+                _ => StatusCode(StatusCodes.Status500InternalServerError)
+            });
+    }
+    
+    [MapToApiVersion("1.0")]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
     {

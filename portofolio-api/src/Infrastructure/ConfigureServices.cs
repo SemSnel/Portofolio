@@ -20,7 +20,8 @@ public static class ConfigureServices
             .AddFileServices(configuration)
             .AddDateTimeServices(configuration)
             .AddMediator(configuration)
-            .AddMapping(configuration);
+            .AddMapping(configuration)
+            .AddLocalization();
     }
     
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)

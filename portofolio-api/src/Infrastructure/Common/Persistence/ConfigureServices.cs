@@ -13,6 +13,7 @@ public static class ConfigureServices
     {
         
         return services
+            .AddScoped<ISearchableReadRepository<TEntity, TId>, Repository<TEntity, TId>>()
             .AddScoped<IReadRepository<TEntity, TId>, Repository<TEntity, TId>>()
             .AddScoped<IWriteRepository<TEntity, TId>, Repository<TEntity, TId>>();
     }

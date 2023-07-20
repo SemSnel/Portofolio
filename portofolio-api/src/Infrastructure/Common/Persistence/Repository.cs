@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using SemSnel.Portofolio.Application.Common.Persistence;
+using SemSnel.Portofolio.Application.WeatherForecasts;
 using SemSnel.Portofolio.Domain.Common.Entities;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.Common.Monads.Result;
@@ -10,15 +11,18 @@ namespace SemSnel.Portofolio.Infrastructure.Common.Persistence;
 
 public sealed class Repository<TEntity, TId> : 
     IReadRepository<TEntity, TId>,
+    ISearchableReadRepository<TEntity, TId>,
     IWriteRepository<TEntity, TId> 
     where TEntity : Entity<TId>
     where TId : notnull
 {
     private readonly IAppDatabaseContext _context;
+    private readonly IMapper _mapper;
     
-    public Repository(IAppDatabaseContext context)
+    public Repository(IAppDatabaseContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
     
     public IQueryable<TEntity> Get()
@@ -146,5 +150,38 @@ public sealed class Repository<TEntity, TId> :
         await _context.SaveChangesAsync(cancellationToken);
         
         return Result.Deleted();
+    }
+
+    public async Task<ErrorOr<TEntity>> SearchSingle(string query, CancellationToken cancellationToken = default)
+    {
+        var entity = await _context
+            .Set<TEntity, TId>()
+            .FromSqlRaw(query)
+            .SingleOrDefaultAsync(cancellationToken);
+
+        if (entity is null)
+        {
+            return Error.NotFound();
+        }
+        
+        return entity;
+    }
+
+    public async Task<ErrorOr<IEnumerable<TEntity>>> Search(string query, CancellationToken cancellationToken = default)
+    {
+        return await _context
+            .Set<TEntity, TId>()
+            .FromSqlRaw(query)
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<ErrorOr<IEnumerable<TDestination>>> Search<TDestination>(string query,
+        CancellationToken cancellationToken = default)
+    {
+        return await _context
+            .Set<TEntity, TId>()
+            .FromSqlRaw(query)
+            .ProjectTo<TDestination>(_mapper)
+            .ToListAsync(cancellationToken);
     }
 }

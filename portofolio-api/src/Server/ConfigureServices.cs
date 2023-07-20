@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
 using SemSnel.Portofolio.Server.Common.OpenApi;
 using SemSnel.Portofolio.Server.Common.Versioning;
+using SemSnel.Portofolio.Server.Filters;
 using SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
 namespace SemSnel.Portofolio.Server;
@@ -19,7 +20,10 @@ public static class ConfigureServices
         
                 // Controllers
         services
-            .AddControllers();
+            .AddControllers(options =>
+            {
+                options.Filters.Add<ApiExceptionFilterAttribute>();
+            });
 
         return services;
     }
