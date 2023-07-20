@@ -9,11 +9,11 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
 {
     private const int LoggingThreshold = 500;
     private readonly Stopwatch _timer;
-    private readonly ILogger<TRequest> _logger;
+    private readonly ILogger<PerformanceBehaviour<TRequest, TResponse>> _logger;
     private readonly IUser _user;
 
     public PerformanceBehaviour(
-        ILogger<TRequest> logger,
+        ILogger<PerformanceBehaviour<TRequest, TResponse>> logger,
         IUser user)
     {
         _timer = new Stopwatch();
