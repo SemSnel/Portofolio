@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <Folder Include="Common\Mapping\" />
+      <Folder Include="WeatherForecasts\Features\Messages\" />
       <Folder Include="WeatherForecasts\Models\" />
     </ItemGroup>
 

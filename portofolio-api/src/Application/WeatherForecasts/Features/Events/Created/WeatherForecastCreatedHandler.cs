@@ -3,7 +3,7 @@ using SemSnel.Portofolio.Domain.WeatherForecasts;
 
 namespace SemSnel.Portofolio.Application.WeatherForecasts.Features.Events.Created;
 
-public sealed class WeatherForecastCreatedHandler : INotificationHandler<WeatherForecastCreated>
+public sealed class WeatherForecastCreatedHandler : INotificationHandler<WeatherForecastCreatedEvent>
 {
     private readonly ILogger<WeatherForecastCreatedHandler> _logger;
 
@@ -12,7 +12,7 @@ public sealed class WeatherForecastCreatedHandler : INotificationHandler<Weather
         _logger = logger;
     }
 
-    public Task Handle(WeatherForecastCreated notification, CancellationToken cancellationToken)
+    public Task Handle(WeatherForecastCreatedEvent notification, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Weather forecast created: {Id}", notification.Id);
 

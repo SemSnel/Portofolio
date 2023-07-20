@@ -26,9 +26,7 @@ services
 var app = builder.Build();
 
 app
-    .UseServer()
-    .UseInfrastructure();
-
+    .UseServer();
 
 // make scope to dispose of database context
 
@@ -40,12 +38,6 @@ var initialiser = scope.ServiceProvider.GetRequiredService<IAppContextInitialise
 
 await initialiser
     .Initialise(context);
-
-var forecasts = await context
-    .WeatherForecasts
-    .ToListAsync();
-
-forecasts.First();
 
 scope.Dispose();
 

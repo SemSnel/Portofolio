@@ -28,6 +28,6 @@ public sealed class
             .ProjectTo<WeatherForecastDto>(_mapper)
             .ToPaginatedListAsync(request.Skip, request.Take);
 
-        return ErrorOrFactory.From(forecasts.Items);
+        return ErrorOr.From(forecasts.Items);
     }
 }

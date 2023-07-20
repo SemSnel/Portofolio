@@ -30,7 +30,7 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
             Summary = requestSummary
         };
         
-        var message = new WeatherForecastCreated(forecasts.Id);
+        var message = new WeatherForecastCreatedEvent(forecasts.Id);
         
         forecasts.AddDomainEvent(message);
         
@@ -38,9 +38,9 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
     }
 }
 
-public sealed class WeatherForecastCreated : EventBase
+public sealed class WeatherForecastCreatedEvent : EventBase
 {
-    public WeatherForecastCreated(Guid id)
+    public WeatherForecastCreatedEvent(Guid id)
     {
         Id = id;
     }

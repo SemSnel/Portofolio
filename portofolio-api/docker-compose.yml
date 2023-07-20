@@ -1,0 +1,13 @@
+﻿services:
+  # sqlite database
+  worker:
+    image: worker
+    build:
+      context: .
+      dockerfile: src/Worker/Dockerfile
+
+  host:
+    image: host
+    build:
+      context: .
+      dockerfile: src/Host/Dockerfile
