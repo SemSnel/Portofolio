@@ -10,4 +10,6 @@ public interface IAppDatabaseContext
     DbSet<TEntity> Set<TEntity, TId>() where TEntity : Entity<TId> where TId : notnull;
     
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+    
+    Task MigrateAsync(CancellationToken cancellationToken = default);
 }

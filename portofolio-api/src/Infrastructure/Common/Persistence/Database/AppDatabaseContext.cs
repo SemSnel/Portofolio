@@ -34,5 +34,9 @@ public class AppDatabaseContext : DbContext, IAppDatabaseContext
             .AddInterceptors(_interceptors);
     }
     
-    
+    public Task MigrateAsync(CancellationToken cancellationToken = default)
+    {
+        return Database.MigrateAsync(cancellationToken);
+    }
+
 }

@@ -4,6 +4,7 @@ using SemSnel.Portofolio.Application.Common.Persistence;
 using SemSnel.Portofolio.Domain.Common.Entities;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Initialisers;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Interceptors;
+using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Seeders;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
@@ -19,7 +20,8 @@ public static class ConfigureServices
         
         
         return services
-            .AddTransient<IAppContextInitialiser, AppContextInitialiser>()
+            .AddScoped<IAppDbContextSeeder, AppDbContextSeeder>()
+            .AddScoped<IAppContextInitialiser, AppContextInitialiser>()
             .AddDbContext<IAppDatabaseContext, AppDatabaseContext>(options =>
             {
                 var connectionString = configuration.GetConnectionString("DefaultConnection");
