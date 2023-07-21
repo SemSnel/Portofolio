@@ -1,4 +1,5 @@
 using SemSnel.Portofolio.Application.Common.Persistence;
+using SemSnel.Portofolio.Application.WeatherForecasts.Repositories;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.Common.Monads.Result;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
@@ -15,18 +16,17 @@ public class UpdateWeatherForecastsCommand : IRequest<ErrorOr<Updated<Guid>>>
 
 public class UpdateWeatherForecastsCommandHandler : IRequestHandler<UpdateWeatherForecastsCommand, ErrorOr<Updated<Guid>>>
 {
-    private readonly IReadRepository<WeatherForecast, Guid> _readRepository;
-    private readonly IWriteRepository<WeatherForecast, Guid> _repository;
+    private readonly IWeatherForecastsRepository _repository;
 
-    public UpdateWeatherForecastsCommandHandler(IWriteRepository<WeatherForecast, Guid> repository, IReadRepository<WeatherForecast, Guid> readRepository)
+    public UpdateWeatherForecastsCommandHandler(IWeatherForecastsRepository repository)
     {
         _repository = repository;
-        _readRepository = readRepository;
     }
+
 
     public async Task<ErrorOr<Updated<Guid>>> Handle(UpdateWeatherForecastsCommand request, CancellationToken cancellationToken)
     {
-        var errorOr = await _readRepository.GetById(request.Id, cancellationToken);
+        var errorOr = await _repository.GetById(request.Id, cancellationToken);
         
         if (errorOr.IsError)
         {

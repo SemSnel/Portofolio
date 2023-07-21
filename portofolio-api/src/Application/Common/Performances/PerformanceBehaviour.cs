@@ -5,7 +5,7 @@ using SemSnel.Portofolio.Application.Users;
 namespace SemSnel.Portofolio.Application.Common.Performances;
 
 public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : notnull, IRequest<TResponse>
+    where TRequest : IRequest<TResponse>
 {
     private const int LoggingThreshold = 500;
     private readonly Stopwatch _timer;
@@ -17,7 +17,6 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
         IUser user)
     {
         _timer = new Stopwatch();
-
         _logger = logger;
         _user = user;
     }

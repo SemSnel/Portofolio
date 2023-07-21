@@ -10,12 +10,17 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddMediator(this IServiceCollection services, IConfiguration configuration)
     {
-        services
-            .AddMediatR(typeof(GetWeatherforecastsQuery).Assembly)
-            .AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>))
-            .AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>))
-            .AddTransient(typeof(IPipelineBehavior<,>), typeof(UnHandledExceptionBehaviour<,>))
-            .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        services.AddMediatR(options =>
+        {
+            // register handlers
+            options.RegisterServicesFromAssemblyContaining<GetWeatherforecastsQuery>();
+            
+            // add behaviours
+            options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(PerformanceBehaviour<,>));
+            options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(LoggingBehaviour<,>));
+            options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(UnHandledExceptionBehaviour<,>));
+            options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(ValidationBehaviour<,>));
+        });
         
         return services;
     }

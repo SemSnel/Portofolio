@@ -2,6 +2,8 @@ using Host.Configs;
 using Microsoft.EntityFrameworkCore;
 using SemSnel.Portofolio.Application;
 using SemSnel.Portofolio.Infrastructure;
+using SemSnel.Portofolio.Infrastructure.Common.Authentication;
+using SemSnel.Portofolio.Infrastructure.Common.Authorization;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Initialisers;
 using SemSnel.Portofolio.Server;
@@ -18,7 +20,9 @@ var services = builder.Services;
 services
     .AddServer(configuration)
     .AddApplication(configuration)
-    .AddInfrastructure(configuration);
+    .AddInfrastructure(configuration)
+    .AddAuthenticationServices(configuration)
+    .AddAuthorizationServices(configuration);
 
 services
         .AddSwaggerGen();

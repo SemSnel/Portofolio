@@ -1,13 +1,25 @@
-﻿services:
-  # sqlite database
+﻿version: "3.9"
+services:
+  # add azure db for sqllite
+  db:
+    image: "mcr.microsoft.com/azure-sql-edge:latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=yourStrong(!)Password
+      - MSSQL_PID=Developer
+    ports:
+      - 1433:1433
+  api:
+    image: "api-host:2.0.0"
+    ports:
+      - 8000:80
+    environment:
+      - ASPNETCORE_URLS=http://+
+      - ConnectionStrings__DefaultConnection=Server=db;Database=master;User=sa;Password=yourStrong(!)Password
   worker:
-    image: worker
-    build:
-      context: .
-      dockerfile: src/Worker/Dockerfile
-
-  host:
-    image: host
-    build:
-      context: .
-      dockerfile: src/Host/Dockerfile
+    image: "worker-host:2.0.0"
+    ports:
+      - 8001:80
+    environment:
+      - ASPNETCORE_URLS=http://+
+      - ConnectionStrings__DefaultConnection=Server=db;Database=master;User=sa;Password=yourStrong(!)Password

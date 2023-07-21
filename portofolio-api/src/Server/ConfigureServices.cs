@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
+using SemSnel.Portofolio.Infrastructure.Common.Authentication;
+using SemSnel.Portofolio.Infrastructure.Common.Authorization;
 using SemSnel.Portofolio.Server.Common.OpenApi;
 using SemSnel.Portofolio.Server.Common.Versioning;
 using SemSnel.Portofolio.Server.Filters;
@@ -40,6 +42,10 @@ public static class ConfigureServices
         app.UseStaticFiles();
         
         app.UseHttpsRedirection();
+
+        app
+            .UseAuthenticationServices()
+            .UseAuthorizationServices();
 
         // Controllers and Endpoints
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

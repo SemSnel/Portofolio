@@ -8,6 +8,7 @@ using SemSnel.Portofolio.Infrastructure.Common.Persistence;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Initialisers;
 using SemSnel.Portofolio.Infrastructure.Common.Validations;
+using SemSnel.Portofolio.Infrastructure.WeatherForecasts;
 
 namespace SemSnel.Portofolio.Infrastructure;
 
@@ -16,8 +17,9 @@ public static class ConfigureServices
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services
-            .AddRepository<WeatherForecast, Guid>();
+            .AddWeatherForecastsServices(configuration);
 
+        // add common services
         return services
             .AddDatabaseContext(configuration)
             .AddFileServices(configuration)

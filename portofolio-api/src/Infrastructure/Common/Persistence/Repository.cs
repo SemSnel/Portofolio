@@ -9,7 +9,7 @@ using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.Persistence;
 
-public sealed class Repository<TEntity, TId> : 
+public abstract class Repository<TEntity, TId> : 
     IReadRepository<TEntity, TId>,
     ISearchableReadRepository<TEntity, TId>,
     IWriteRepository<TEntity, TId> 

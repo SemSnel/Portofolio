@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using SemSnel.Portofolio.Application.Common.Files;
 using SemSnel.Portofolio.Application.Common.Persistence;
+using SemSnel.Portofolio.Application.WeatherForecasts.Repositories;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
 
@@ -14,16 +15,16 @@ public class ExportForecastsQuery : IRequest<ErrorOr<FileDto>>
 public sealed class ExportForecastsHandler : IRequestHandler<ExportForecastsQuery, ErrorOr<FileDto>>
 {
     private readonly IMapper _mapper;
-    private readonly IReadRepository<WeatherForecast, Guid> _readRepository;
+    private readonly IWeatherForecastsRepository _readRepository;
     private readonly ICsvService _csvService;
     private readonly IStringLocalizer<ExportForecastsHandler> _localizer;
 
-    public ExportForecastsHandler(IReadRepository<WeatherForecast, Guid> readRepository, ICsvService csvService, IMapper mapper, IStringLocalizer<ExportForecastsHandler> localizer)
+    public ExportForecastsHandler(ICsvService csvService, IMapper mapper, IStringLocalizer<ExportForecastsHandler> localizer, IWeatherForecastsRepository readRepository)
     {
-        _readRepository = readRepository;
         _csvService = csvService;
         _mapper = mapper;
         _localizer = localizer;
+        _readRepository = readRepository;
     }
 
     public async Task<ErrorOr<FileDto>> Handle(ExportForecastsQuery request, CancellationToken cancellationToken)

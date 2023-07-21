@@ -1,15 +1,16 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
-using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Server.Common.Monads;
 
 namespace SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
 [ApiController]
+[Authorize]
 [ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Route("api/v{version:apiVersion}/[controller]")]
@@ -31,33 +32,19 @@ public class WeatherForecastController : ControllerBase
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsQuery query)
     {
-        var errorOr = await _mediator.Send(query);
+        var response = await _mediator.Send(query);
         
-        return  errorOr.ToOkActionResult();
+        return  response.ToOkActionResult();
     }
-    
-    [MapToApiVersion("1.0")]
-    [HttpGet("sql")]
-    [ProducesResponseType(typeof(IEnumerable<WeatherForecastDto>), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
-    public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsBySqlQuery query)
-    {
-        var errorOr = await _mediator.Send(query);
 
-        return errorOr.ToOkActionResult();
-    }
-    
     [MapToApiVersion("1.0")]
     [HttpPost]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
     {
-        var errorOr = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
         
-        return  errorOr.ToCreatedActionResult(nameof(Get), new { id = errorOr.Value });
+        return  response.ToCreatedActionResult(nameof(Get), new { id = response.Value });
     }
     
     [MapToApiVersion("1.0")]
@@ -71,9 +58,9 @@ public class WeatherForecastController : ControllerBase
     {
         command.Id = id;
         
-        var errorOr = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
 
-        return errorOr.ToNoContentActionResult();
+        return response.ToNoContentActionResult();
     }
 
     [MapToApiVersion("1.0")]
@@ -81,8 +68,8 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("export")]
     public async Task<IActionResult> Export([FromQuery] ExportForecastsQuery query)
     {
-        var errorOr = await _mediator.Send(query);
+        var response = await _mediator.Send(query);
         
-        return  errorOr.ToFileContentResult();
+        return  response.ToFileContentResult();
     }
 }
