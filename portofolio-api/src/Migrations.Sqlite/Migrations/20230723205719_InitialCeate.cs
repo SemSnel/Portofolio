@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SemSnel.Portofolio.Migrations.Migrations
+namespace SemSnel.Portofolio.Migrations.Sqlite.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCeate : Migration

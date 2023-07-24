@@ -1,4 +1,5 @@
 using SemSnel.Portofolio.Application.Common.MessageBrokers;
+using SemSnel.Portofolio.Application.WeatherForecasts.Features.Messages;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.Common.Monads.Result;
 
@@ -13,15 +14,19 @@ public class MessageService : IMessageService
 
     public async Task<ErrorOr<IEnumerable<IMessage>>> Get(string queueName, int take)
     {
-        var messages = Enumerable.Empty<IMessage>();
+        var messages = new List<IMessage>();
 
-        var errorOr = ErrorOr.From(messages);
+        var fakeMessage = new WeatherForecastsCreatedMessage();
+        
+        messages.Add(fakeMessage);
+
+        var errorOr = ErrorOr.From<IEnumerable<IMessage>>(messages);
         
         return errorOr;
     }
 
     public Task<ErrorOr<Deleted>> Delete(IMessage message)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(ErrorOr.From<Deleted>(new Deleted()));
     }
 }

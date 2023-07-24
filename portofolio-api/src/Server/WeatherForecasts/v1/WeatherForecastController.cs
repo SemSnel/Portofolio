@@ -10,7 +10,6 @@ using SemSnel.Portofolio.Server.Common.Monads;
 namespace SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
 [ApiController]
-[Authorize]
 [ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Route("api/v{version:apiVersion}/[controller]")]

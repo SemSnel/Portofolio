@@ -9,6 +9,8 @@ public interface IReadRepository<TEntity, TId>
     where TId : notnull
 {
     public IQueryable<TEntity> Get();
+    
+    public Task<ErrorOr<int>> Count(CancellationToken cancellationToken = default);
 
     public Task<ErrorOr<TEntity>> GetById(TId id, CancellationToken cancellationToken = default);
     

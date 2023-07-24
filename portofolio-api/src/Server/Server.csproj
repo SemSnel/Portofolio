@@ -4,8 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <InvariantGlobalization>false</InvariantGlobalization>
         <OutputType>Library</OutputType>
         <RootNamespace>SemSnel.Portofolio.Server</RootNamespace>
     </PropertyGroup>

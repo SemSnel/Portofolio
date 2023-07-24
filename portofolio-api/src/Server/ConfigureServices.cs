@@ -1,13 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.OpenApi.Models;
 using SemSnel.Portofolio.Infrastructure.Common.Authentication;
 using SemSnel.Portofolio.Infrastructure.Common.Authorization;
 using SemSnel.Portofolio.Server.Common.OpenApi;
 using SemSnel.Portofolio.Server.Common.Versioning;
 using SemSnel.Portofolio.Server.Filters;
-using SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
 namespace SemSnel.Portofolio.Server;
 
@@ -48,7 +43,10 @@ public static class ConfigureServices
             .UseAuthorizationServices();
 
         // Controllers and Endpoints
-        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
 
         return app;
     }

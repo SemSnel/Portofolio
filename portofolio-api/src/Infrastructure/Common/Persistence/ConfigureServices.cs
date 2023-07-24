@@ -11,7 +11,6 @@ public static class ConfigureServices
         where TEntity : Entity<TId> 
         where TId : notnull
     {
-        
         return services
             .AddScoped<ISearchableReadRepository<TEntity, TId>, Repository<TEntity, TId>>()
             .AddScoped<IReadRepository<TEntity, TId>, Repository<TEntity, TId>>()

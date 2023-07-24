@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <InvariantGlobalization>true</InvariantGlobalization>
+        <InvariantGlobalization>false</InvariantGlobalization>
         <UserSecretsId>dotnet-Worker-6C9C7362-C481-48D8-ACE8-CE02046746A8</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <ContainerImageName>worker-host</ContainerImageName>
@@ -25,6 +25,5 @@
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Domain\Domain.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-      <ProjectReference Include="..\Migrations\Migrations.csproj" />
     </ItemGroup>
 </Project>

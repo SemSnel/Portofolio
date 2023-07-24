@@ -8,17 +8,17 @@ using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
 #nullable disable
 
-namespace SemSnel.Portofolio.Migrations.Migrations
+namespace SemSnel.Portofolio.Migrations.Sqlite.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    [Migration("20230720100614_InitialCeate")]
+    [Migration("20230723205719_InitialCeate")]
     partial class InitialCeate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.9");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.0-preview.6.23329.4");
 
             modelBuilder.Entity("SemSnel.Portofolio.Domain.WeatherForecasts.WeatherForecast", b =>
                 {

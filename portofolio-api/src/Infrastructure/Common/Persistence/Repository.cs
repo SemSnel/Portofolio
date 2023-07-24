@@ -30,6 +30,11 @@ public abstract class Repository<TEntity, TId> :
         return _context.Set<TEntity, TId>();
     }
 
+    public async Task<ErrorOr<int>> Count(CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<TEntity, TId>().CountAsync(cancellationToken);
+    }
+
     public async Task<ErrorOr<TEntity>> GetById(TId id, CancellationToken cancellationToken = default)
     {
         var entity = await _context

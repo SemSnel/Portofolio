@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <InvariantGlobalization>true</InvariantGlobalization>
+        <InvariantGlobalization>false</InvariantGlobalization>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <RootNamespace>SemSnel.Portofolio.Host</RootNamespace>
         <UserSecretsId>05fb7e03-2529-4e41-807c-e484223743c8</UserSecretsId>
@@ -20,13 +20,13 @@
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-        <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.4.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-      <ProjectReference Include="..\Migrations\Migrations.csproj" />
+      <ProjectReference Include="..\Migrations.Sqlite\Migrations.Sqlite.csproj" />
+      <ProjectReference Include="..\Migrations.SqlServer\Migrations.SqlServer.csproj" />
       <ProjectReference Include="..\Server\Server.csproj" />
     </ItemGroup>
 

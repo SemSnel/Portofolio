@@ -8,8 +8,11 @@ using SemSnel.Portofolio.Domain.WeatherForecasts;
 
 namespace SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
 
-public record GetWeatherforecastsQuery(int Skip = 1, int Take = 10)
-    : IRequest<ErrorOr<IEnumerable<WeatherForecastDto>>>;
+public sealed class GetWeatherforecastsQuery : IRequest<ErrorOr<IEnumerable<WeatherForecastDto>>>
+{
+    public int Skip { get; init; } = 1;
+    public int Take { get; init; } = 10;
+}
 
 public sealed class GetWeatherforecastsQueryValidator : AbstractValidator<GetWeatherforecastsQuery>
 {
