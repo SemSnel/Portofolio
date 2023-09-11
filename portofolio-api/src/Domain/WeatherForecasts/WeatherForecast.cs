@@ -21,7 +21,6 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
     
     public static WeatherForecast Create(DateOnly requestDate, int requestTemperatureC, string? requestSummary)
     {
-
         var forecasts = new WeatherForecast
         {
             Id = Guid.NewGuid(),

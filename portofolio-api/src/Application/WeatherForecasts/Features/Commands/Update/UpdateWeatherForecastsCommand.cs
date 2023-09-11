@@ -8,10 +8,10 @@ namespace SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Upda
 
 public class UpdateWeatherForecastsCommand : IRequest<ErrorOr<Updated<Guid>>>
 {
-    public Guid Id { get; set; }
-    public DateOnly Date { get; set; }
-    public int TemperatureC { get; set; }
-    public string? Summary { get; set; }
+    public Guid Id { get; init; }
+    public DateOnly Date { get; init; }
+    public int TemperatureC { get; init; }
+    public string? Summary { get; init; }
 }
 
 public class UpdateWeatherForecastsCommandHandler : IRequestHandler<UpdateWeatherForecastsCommand, ErrorOr<Updated<Guid>>>
@@ -28,7 +28,7 @@ public class UpdateWeatherForecastsCommandHandler : IRequestHandler<UpdateWeathe
     {
         var errorOr = await _repository.GetById(request.Id, cancellationToken);
         
-        if (errorOr.IsError)
+        /*if (errorOr.IsError)
         {
             return Error.NotFound($"Weather forecast with id {request.Id} was not found");
         }
@@ -37,8 +37,21 @@ public class UpdateWeatherForecastsCommandHandler : IRequestHandler<UpdateWeathe
         
         var update = weatherForecast.Update(request.Date, request.TemperatureC, request.Summary);
         
-        var result = await _repository.Update(update, cancellationToken);
+        var result = await _repository.Update(update, cancellationToken);*/
+        /* make code with match */
 
-        return result;
+        return await errorOr.MatchAsync(
+            forecast =>
+            {
+                var updated = forecast.Update(request.Date, request.TemperatureC, request.Summary);
+                
+                return _repository.Update(updated, cancellationToken);
+            },
+            (errors) =>
+            {
+                var error = ErrorOr<Updated<Guid>>.From(Error.NotFound($"Weather forecast with id {request.Id} was not found"));
+                
+                return Task.FromResult(error);
+            });
     }
 }

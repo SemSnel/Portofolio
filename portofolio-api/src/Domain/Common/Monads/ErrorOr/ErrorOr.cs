@@ -38,6 +38,11 @@ public readonly record struct ErrorOr<TValue> : IErrorOr<TValue>
     {
         return errors;
     }
+    
+    public static ErrorOr<TValue> From(Error error)
+    {
+        return error;
+    }
 
     /// <summary>
     /// Gets the value.
@@ -110,7 +115,7 @@ public readonly record struct ErrorOr<TValue> : IErrorOr<TValue>
         return new ErrorOr<TValue>(errors.ToList());
     }
 
-    public void Switch(Action<TValue> onValue, Action<List<Error>> onError)
+    public void Match(Action<TValue> onValue, Action<List<Error>> onError)
     {
         if (IsError)
         {
@@ -121,7 +126,7 @@ public readonly record struct ErrorOr<TValue> : IErrorOr<TValue>
         onValue(Value);
     }
 
-    public async Task SwitchAsync(Func<TValue, Task> onValue, Func<List<Error>, Task> onError)
+    public async Task Match(Func<TValue, Task> onValue, Func<List<Error>, Task> onError)
     {
         if (IsError)
         {
@@ -132,7 +137,7 @@ public readonly record struct ErrorOr<TValue> : IErrorOr<TValue>
         await onValue(Value).ConfigureAwait(false);
     }
 
-    public void SwitchFirst(Action<TValue> onValue, Action<Error> onFirstError)
+    public void MatchFirst(Action<TValue> onValue, Action<Error> onFirstError)
     {
         if (IsError)
         {
@@ -143,7 +148,7 @@ public readonly record struct ErrorOr<TValue> : IErrorOr<TValue>
         onValue(Value);
     }
 
-    public async Task SwitchFirstAsync(Func<TValue, Task> onValue, Func<Error, Task> onFirstError)
+    public async Task MatchFirstAsync(Func<TValue, Task> onValue, Func<Error, Task> onFirstError)
     {
         if (IsError)
         {

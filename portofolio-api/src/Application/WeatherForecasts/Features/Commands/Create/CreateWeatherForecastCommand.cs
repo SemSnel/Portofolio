@@ -31,8 +31,6 @@ public sealed class
         
         var errorOr = await _writeRepository.Add(forecasts, cancellationToken);
 
-        var result = errorOr.Value;
-        
-        return result;
+        return errorOr;
     }
 }

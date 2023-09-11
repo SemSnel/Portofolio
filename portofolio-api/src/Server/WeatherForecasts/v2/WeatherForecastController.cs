@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
@@ -7,10 +6,10 @@ using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
 using SemSnel.Portofolio.Server.Common.Monads;
 
-namespace SemSnel.Portofolio.Server.WeatherForecasts.v1;
+namespace SemSnel.Portofolio.Server.WeatherForecasts.v2;
 
 [ApiController]
-[ApiVersion("1.0")]
+[ApiVersion("2.0")]
 [Route("api/[controller]")]
 [Route("api/v{version:apiVersion}/[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -22,7 +21,7 @@ public class WeatherForecastController : ControllerBase
         _mediator = mediator;
     }
     
-    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<WeatherForecastDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -31,12 +30,15 @@ public class WeatherForecastController : ControllerBase
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsQuery query)
     {
+
+        throw new NotImplementedException();
+        
         var response = await _mediator.Send(query);
         
         return  response.ToOkActionResult();
     }
 
-    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     [HttpPost]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
@@ -46,7 +48,7 @@ public class WeatherForecastController : ControllerBase
         return  response.ToCreatedActionResult(nameof(Get), new { id = response.Value });
     }
     
-    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
