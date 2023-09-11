@@ -32,7 +32,9 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         };
         
         // if environment is development, add stack trace
-        if (context.HttpContext.RequestServices.GetRequiredService<IWebHostEnvironment>().IsDevelopment())
+        var isDevelopment = context.HttpContext.RequestServices.GetRequiredService<IWebHostEnvironment>().IsDevelopment();
+        
+        if (isDevelopment)
         {
             details.Detail = context.Exception.StackTrace;
         }
