@@ -21,7 +21,6 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
     
     public static WeatherForecast Create(DateOnly requestDate, int requestTemperatureC, string? requestSummary)
     {
-
         var forecasts = new WeatherForecast
         {
             Id = Guid.NewGuid(),
@@ -30,20 +29,27 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
             Summary = requestSummary
         };
         
-        var message = new WeatherForecastCreated(forecasts.Id);
+        var message = new WeatherForecastCreatedEvent(forecasts.Id);
         
         forecasts.AddDomainEvent(message);
         
         return forecasts;
     }
-}
-
-public sealed class WeatherForecastCreated : EventBase
-{
-    public WeatherForecastCreated(Guid id)
+    
+    public WeatherForecast Update(DateOnly requestDate, int requestTemperatureC, string? requestSummary)
     {
-        Id = id;
+        var forecasts = new WeatherForecast
+        {
+            Id = Id,
+            Date = requestDate,
+            TemperatureC = requestTemperatureC,
+            Summary = requestSummary
+        };
+        
+        var message = new WeatherForecastUpdatedEvent(forecasts.Id);
+        
+        forecasts.AddDomainEvent(message);
+        
+        return forecasts;
     }
-
-    public Guid Id { get; }
 }

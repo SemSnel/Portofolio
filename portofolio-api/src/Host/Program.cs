@@ -2,6 +2,8 @@ using Host.Configs;
 using Microsoft.EntityFrameworkCore;
 using SemSnel.Portofolio.Application;
 using SemSnel.Portofolio.Infrastructure;
+using SemSnel.Portofolio.Infrastructure.Common.Authentication;
+using SemSnel.Portofolio.Infrastructure.Common.Authorization;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Initialisers;
 using SemSnel.Portofolio.Server;
@@ -18,7 +20,9 @@ var services = builder.Services;
 services
     .AddServer(configuration)
     .AddApplication(configuration)
-    .AddInfrastructure(configuration);
+    .AddInfrastructure(configuration)
+    .AddAuthenticationServices(configuration)
+    .AddAuthorizationServices(configuration);
 
 services
         .AddSwaggerGen();
@@ -26,9 +30,7 @@ services
 var app = builder.Build();
 
 app
-    .UseServer()
-    .UseInfrastructure();
-
+    .UseServer();
 
 // make scope to dispose of database context
 
@@ -40,12 +42,6 @@ var initialiser = scope.ServiceProvider.GetRequiredService<IAppContextInitialise
 
 await initialiser
     .Initialise(context);
-
-var forecasts = await context
-    .WeatherForecasts
-    .ToListAsync();
-
-forecasts.First();
 
 scope.Dispose();
 

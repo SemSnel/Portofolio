@@ -27,10 +27,10 @@ public interface IErrorOr<TValue> : IErrorOr
     /// </summary>
     Error FirstError { get; }
 
-    void Switch(Action<TValue> onValue, Action<List<Error>> onError);
-    Task SwitchAsync(Func<TValue, Task> onValue, Func<List<Error>, Task> onError);
-    void SwitchFirst(Action<TValue> onValue, Action<Error> onFirstError);
-    Task SwitchFirstAsync(Func<TValue, Task> onValue, Func<Error, Task> onFirstError);
+    void Match(Action<TValue> onValue, Action<List<Error>> onError);
+    Task Match(Func<TValue, Task> onValue, Func<List<Error>, Task> onError);
+    void MatchFirst(Action<TValue> onValue, Action<Error> onFirstError);
+    Task MatchFirstAsync(Func<TValue, Task> onValue, Func<Error, Task> onFirstError);
     TResult Match<TResult>(Func<TValue, TResult> onValue, Func<List<Error>, TResult> onError);
     Task<TResult> MatchAsync<TResult>(Func<TValue, Task<TResult>> onValue, Func<List<Error>, Task<TResult>> onError);
     TResult MatchFirst<TResult>(Func<TValue, TResult> onValue, Func<Error, TResult> onFirstError);

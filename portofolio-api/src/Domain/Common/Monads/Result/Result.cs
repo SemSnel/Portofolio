@@ -22,4 +22,3 @@ public static class Result
     
     public static Updated<T> Updated<T>(T value) => new(value);
 }
-

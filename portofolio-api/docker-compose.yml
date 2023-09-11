@@ -1,0 +1,54 @@
+﻿version: "3.9"
+services:
+  # add azure db for sqllite
+  db:
+    image: "mcr.microsoft.com/azure-sql-edge:latest"
+    hostname: db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=yourStrong(!)Password
+      - MSSQL_PID=Developer
+      - MSSQL_TCP_PORT=1433
+      - CREATE_DATABASE_IF_NOT_EXISTS=true
+      - MSSQL_TCP_PROVIDER=System.Data.SqlClient
+    ports:
+      - 1433:1433
+    networks:
+      - my_network
+
+  api:
+    image: "api-host:2.0.0"
+    ports:
+      - 8000:80
+    environment:
+      - ASPNETCORE_URLS=http://+
+      - ConnectionStrings__DefaultConnection=Server=db;Database=master;User Id=sa;Password=yourStrong(!)Password;Trust Server Certificate=true;
+      - SQL_PROVIDER=System.Data.SqlClient
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+      - LANG=en_US.UTF-8
+      - SQL_CLIENT_HOST=db
+      - SQL_CLIENT_PORT=1433
+      - SQL_CLIENT_USER=sa
+      - SQL_CLIENT_PASSWORD=yourStrong(!)Password
+      - SQL_CLIENT_DATABASE=appdb
+    depends_on:
+      - db
+    networks:
+      - my_network
+
+  worker:
+    image: "worker-host:2.0.0"
+    ports:
+      - 8001:80
+    environment:
+      - ASPNETCORE_URLS=http://+
+      - LANG=en_US.UTF-8
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+      - ConnectionStrings__DefaultConnection=Server=db;Database=master;User Id=sa;Password=yourStrong(!)Password;Trust Server Certificate=true;
+    depends_on:
+      - db
+    networks:
+      - my_network
+
+networks:
+  my_network:

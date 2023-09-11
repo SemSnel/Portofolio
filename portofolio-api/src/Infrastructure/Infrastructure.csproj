@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>SemSnel.Portofolio.Infrastructure</RootNamespace>
@@ -15,16 +15,22 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoBogus" Version="2.13.1" />
+      <PackageReference Include="Bogus" Version="34.0.2" />
+      <PackageReference Include="Bogus.Healthcare" Version="34.0.2" />
+      <PackageReference Include="Bogus.Text" Version="34.0.2" />
       <PackageReference Include="CsvHelper" Version="30.0.1" />
       <PackageReference Include="EntityFramework" Version="6.4.4" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
       <PackageReference Include="MediatR" Version="12.1.1" />
-      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.9" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.9" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.9" />
-      <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.9" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.9" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.6.23329.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0-preview.6.23329.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.0-preview.6.23329.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0-preview.6.23329.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.6.23329.4" />
+      <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0-preview.6.23329.11" />
     </ItemGroup>
 
 </Project>

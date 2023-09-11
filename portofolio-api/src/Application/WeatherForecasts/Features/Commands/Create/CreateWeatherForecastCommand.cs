@@ -1,4 +1,5 @@
 using SemSnel.Portofolio.Application.Common.Persistence;
+using SemSnel.Portofolio.Application.WeatherForecasts.Repositories;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.Common.Monads.Result;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
@@ -17,9 +18,9 @@ public sealed class CreateWeatherForecastCommand : IRequest<ErrorOr<Created<Guid
 public sealed class
     CreateWeatherForecastCommandHandler : IRequestHandler<CreateWeatherForecastCommand, ErrorOr<Created<Guid>>>
 {
-    private readonly IWriteRepository<WeatherForecast, Guid> _writeRepository;
+    private readonly IWeatherForecastsRepository _writeRepository;
 
-    public CreateWeatherForecastCommandHandler(IWriteRepository<WeatherForecast, Guid> writeRepository)
+    public CreateWeatherForecastCommandHandler(IWeatherForecastsRepository writeRepository)
     {
         _writeRepository = writeRepository;
     }
@@ -30,8 +31,6 @@ public sealed class
         
         var errorOr = await _writeRepository.Add(forecasts, cancellationToken);
 
-        var result = errorOr.Value;
-        
-        return result;
+        return errorOr;
     }
 }

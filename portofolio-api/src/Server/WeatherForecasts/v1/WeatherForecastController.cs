@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
+using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
-using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
+using SemSnel.Portofolio.Server.Common.Monads;
 
 namespace SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
@@ -29,82 +31,42 @@ public class WeatherForecastController : ControllerBase
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsQuery query)
     {
-        var errorOr = await _mediator.Send(query);
+        var response = await _mediator.Send(query);
         
-        return  errorOr.Match<IActionResult>(
-            forecasts => Ok(forecasts),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+        return  response.ToOkActionResult();
+    }
+
+    [MapToApiVersion("1.0")]
+    [HttpPost]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+    public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
+    {
+        var response = await _mediator.Send(command);
+        
+        return  response.ToCreatedActionResult(nameof(Get), new { id = response.Value });
     }
     
     [MapToApiVersion("1.0")]
-    [HttpGet("sql")]
-    [ProducesResponseType(typeof(IEnumerable<WeatherForecastDto>), StatusCodes.Status200OK)]
+    [HttpPut("{id:guid}")]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
-    public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsBySqlQuery query)
+    public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateWeatherForecastsCommand command)
     {
-        var errorOr = await _mediator.Send(query);
-        
-        return  errorOr.Match<IActionResult>(
-            forecasts => Ok(forecasts),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
-    }
-    
-    [MapToApiVersion("1.0")]
-    [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
-    {
-        var errorOr = await _mediator.Send(command);
-        
-        return  errorOr.Match<IActionResult>(
-            forecast => CreatedAtAction(nameof(Get), new { id = forecast.Value }, forecast),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
-    }
+        var response = await _mediator.Send(command);
 
+        return response.ToNoContentActionResult();
+    }
 
     [MapToApiVersion("1.0")]
     [Produces("text/csv")]
     [HttpGet("export")]
     public async Task<IActionResult> Export([FromQuery] ExportForecastsQuery query)
     {
-        var errorOr = await _mediator.Send(query);
+        var response = await _mediator.Send(query);
         
-        return  errorOr.Match<IActionResult>(
-            fileDto => File(fileDto.Content, "text/csv", "weather-forecasts.csv"),
-            errors => errors.First().Type switch
-            {
-                ErrorType.NotFound => NotFound(),
-                ErrorType.Conflict => Conflict(),
-                ErrorType.Unauthorized => Unauthorized(),
-                ErrorType.Forbidden => StatusCode(StatusCodes.Status403Forbidden),
-                ErrorType.Validation => BadRequest(errors.First().Description),
-                    _ => StatusCode(StatusCodes.Status500InternalServerError)
-            });
+        return  response.ToFileContentResult();
     }
 }

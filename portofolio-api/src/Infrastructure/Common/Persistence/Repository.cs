@@ -9,7 +9,7 @@ using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.Persistence;
 
-public sealed class Repository<TEntity, TId> : 
+public abstract class Repository<TEntity, TId> : 
     IReadRepository<TEntity, TId>,
     ISearchableReadRepository<TEntity, TId>,
     IWriteRepository<TEntity, TId> 
@@ -28,6 +28,11 @@ public sealed class Repository<TEntity, TId> :
     public IQueryable<TEntity> Get()
     {
         return _context.Set<TEntity, TId>();
+    }
+
+    public async Task<ErrorOr<int>> Count(CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<TEntity, TId>().CountAsync(cancellationToken);
     }
 
     public async Task<ErrorOr<TEntity>> GetById(TId id, CancellationToken cancellationToken = default)

@@ -1,17 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <InvariantGlobalization>true</InvariantGlobalization>
+        <InvariantGlobalization>false</InvariantGlobalization>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <RootNamespace>SemSnel.Portofolio.Host</RootNamespace>
+        <UserSecretsId>05fb7e03-2529-4e41-807c-e484223743c8</UserSecretsId>
+        <ContainerImageName>api-host</ContainerImageName>
+        <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:8.0-preview</ContainerBaseImage>
+        <ContainerImageTags>2.0.0;latest</ContainerImageTags>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.8" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.6.23329.4">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
@@ -19,15 +23,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-      <ProjectReference Include="..\Migrations\Migrations.csproj" />
+      <ProjectReference Include="..\Migrations.Sqlite\Migrations.Sqlite.csproj" />
+      <ProjectReference Include="..\Migrations.SqlServer\Migrations.SqlServer.csproj" />
       <ProjectReference Include="..\Server\Server.csproj" />
     </ItemGroup>
 
