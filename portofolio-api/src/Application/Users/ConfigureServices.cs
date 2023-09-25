@@ -7,6 +7,6 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddUsers(this IServiceCollection services, IConfiguration configuration)
     {
-        return services.AddTransient<IUser, FakeUser>();
+        return services.AddTransient<ICurrentUser, FakeCurrentUser>();
     }
 }

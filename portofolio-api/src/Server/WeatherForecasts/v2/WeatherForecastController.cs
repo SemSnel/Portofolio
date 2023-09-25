@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts;
+using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Cancel;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
@@ -30,9 +31,6 @@ public class WeatherForecastController : ControllerBase
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> Get([FromQuery] GetWeatherforecastsQuery query)
     {
-
-        throw new NotImplementedException();
-        
         var response = await _mediator.Send(query);
         
         return  response.ToOkActionResult();
@@ -62,7 +60,7 @@ public class WeatherForecastController : ControllerBase
         return response.ToNoContentActionResult();
     }
 
-    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     [Produces("text/csv")]
     [HttpGet("export")]
     public async Task<IActionResult> Export([FromQuery] ExportForecastsQuery query)
@@ -70,5 +68,25 @@ public class WeatherForecastController : ControllerBase
         var response = await _mediator.Send(query);
         
         return  response.ToFileContentResult();
+    }
+    
+    [MapToApiVersion("2.0")]
+    [HttpDelete("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<IActionResult> Cancel([FromRoute] Guid id)
+    {
+        var command = new CancelWeatherForecastCommand
+        {
+            Id = id
+        };
+        
+        var response = await _mediator.Send(command);
+
+        return response
+            .ToNoContentActionResult();
     }
 }

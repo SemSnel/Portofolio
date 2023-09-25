@@ -41,9 +41,13 @@ public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
             .SelectMany(e => e.DomainEvents)
             .ToList();
 
-        entities.ToList().ForEach(e => e.ClearDomainEvents());
+        entities
+            .ToList()
+            .ForEach(e => e.ClearDomainEvents());
 
-        foreach (var domainEvent in domainEvents)
-            await _mediator.Publish(domainEvent);
+        var tasks = domainEvents
+            .Select((domainEvent) => _mediator.Publish(domainEvent));
+        
+        await Task.WhenAll(tasks);
     }
 }

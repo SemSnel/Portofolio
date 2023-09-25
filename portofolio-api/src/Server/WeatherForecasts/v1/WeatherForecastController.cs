@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts;
+using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Cancel;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;

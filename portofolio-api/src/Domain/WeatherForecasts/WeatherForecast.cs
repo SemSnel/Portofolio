@@ -1,4 +1,5 @@
 using SemSnel.Portofolio.Domain.Common.Entities;
+using SemSnel.Portofolio.Domain.WeatherForecasts.Events;
 
 namespace SemSnel.Portofolio.Domain.WeatherForecasts;
 
@@ -51,5 +52,12 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
         forecasts.AddDomainEvent(message);
         
         return forecasts;
+    }
+
+    public void Cancel()
+    {
+        var message = new WeatherForecastDeletedEvent(Id);
+        
+        AddDomainEvent(message);
     }
 }

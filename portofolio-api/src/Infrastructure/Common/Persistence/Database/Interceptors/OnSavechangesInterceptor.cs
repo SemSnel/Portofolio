@@ -9,14 +9,14 @@ namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Intercep
 
 public class AuditableEntityInterceptor : SaveChangesInterceptor
 {
-    private readonly IUser _user;
+    private readonly ICurrentUser _currentUser;
     private readonly IDateTimeProvider _dateTime;
 
     public AuditableEntityInterceptor(
-        IUser user,
+        ICurrentUser currentUser,
         IDateTimeProvider dateTime)
     {
-        _user = user;
+        _currentUser = currentUser;
         _dateTime = dateTime;
     }
 
@@ -42,13 +42,13 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
         {
             if (entry.State == EntityState.Added)
             {
-                entry.Entity.CreatedBy = _user.Id;
+                entry.Entity.CreatedBy = _currentUser.Id;
                 entry.Entity.CreatedOn = _dateTime.Now();
             } 
 
             if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
             {
-                entry.Entity.LastModifiedBy = _user.Id;
+                entry.Entity.LastModifiedBy = _currentUser.Id;
                 entry.Entity.LastModifiedOn = _dateTime.Now();
             }
         }

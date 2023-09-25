@@ -10,12 +10,10 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddServer(this IServiceCollection services, IConfiguration configuration)
     {
-        // ApiVersioning
         services
             .AddVersioning(configuration)
             .AddOpenApi(configuration);
-        
-                // Controllers
+
         services
             .AddControllers(options =>
             {
@@ -41,8 +39,7 @@ public static class ConfigureServices
         app
             .UseAuthenticationServices()
             .UseAuthorizationServices();
-
-        // Controllers and Endpoints
+        
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();

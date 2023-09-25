@@ -18,7 +18,6 @@ public static class IQueryableExtensions
         return source.ProjectToType<TDestination>(mapper.Config);
     }
     
-    
     /// <summary>
     /// Maps an IQueryable to a PaginatedList
     /// </summary>

@@ -95,4 +95,12 @@ public readonly record struct Error
         string code,
         string description) =>
         new(code, description, (ErrorType)type);
+    
+    /// <summary>
+    /// Creates an <see cref="Error"/> of type <see cref="ErrorType.Forbidden"/> from a code and description.
+    /// </summary>
+    public static Error Forbidden(
+        string code = "General.Forbidden",
+        string description = "A 'Forbidden' error has occurred.") =>
+        new(code, description, ErrorType.Forbidden);
 }

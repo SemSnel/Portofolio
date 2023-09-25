@@ -6,10 +6,8 @@ namespace SemSnel.Portofolio.Application.Common.MessageBrokers;
 /// <summary>
 /// A service 
 /// </summary>
-public interface IMessageService
+public interface IMessageRetriever
 {
-    Task<ErrorOr<Success>> Send(IMessage message);
-    
     Task<ErrorOr<IEnumerable<IMessage>>> Get(string queueName, int take);
 
     Task<ErrorOr<Deleted>> Delete(IMessage message);

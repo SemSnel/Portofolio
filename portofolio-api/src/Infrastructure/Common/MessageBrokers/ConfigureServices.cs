@@ -14,6 +14,6 @@ public static class ConfigureServices
     public static IServiceCollection AddMessageBroker(this IServiceCollection services, IConfiguration configuration)
     {
         return services
-            .AddScoped<IMessageService, MessageService>();
+            .AddScoped<IMessageRetriever, MessageRetriever>();
     }
 }

@@ -1,3 +1,4 @@
+using SemSnel.Portofolio.Application.Common.Authorisations;
 using SemSnel.Portofolio.Application.Common.Logging;
 using SemSnel.Portofolio.Application.Common.Performances;
 using SemSnel.Portofolio.Application.Common.UnHandledExceptions;
@@ -18,6 +19,7 @@ public static class ConfigureServices
             // add behaviours
             options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(PerformanceBehaviour<,>));
             options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(LoggingBehaviour<,>));
+            options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(AuthorizationBehaviour<,>));
             options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(UnHandledExceptionBehaviour<,>));
             options.AddBehavior(typeof(IPipelineBehavior<,>),typeof(ValidationBehaviour<,>));
         });

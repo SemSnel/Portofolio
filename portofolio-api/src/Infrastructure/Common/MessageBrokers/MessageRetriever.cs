@@ -5,9 +5,9 @@ using SemSnel.Portofolio.Domain.Common.Monads.Result;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.MessageBrokers;
 
-public class MessageService : IMessageService
+public class MessageRetriever : IMessageRetriever
 {
-    public Task<ErrorOr<Success>> Send(IMessage message)
+    public Task<ErrorOr<Success>> Publish(IMessage message)
     {
         throw new NotImplementedException();
     }

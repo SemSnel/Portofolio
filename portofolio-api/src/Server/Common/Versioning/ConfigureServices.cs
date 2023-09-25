@@ -8,7 +8,6 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddVersioning(this IServiceCollection services, IConfiguration configuration)
     {
-        // ApiVersioning
         services
             .AddApiVersioning(config =>
             {

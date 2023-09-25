@@ -7,11 +7,13 @@ public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
     private readonly IServiceScopeFactory _serviceScopeFactory;
+    private readonly IMessageRetriever _messageRetriever;
 
-    public Worker(ILogger<Worker> logger, IServiceScopeFactory serviceScopeFactory)
+    public Worker(ILogger<Worker> logger, IServiceScopeFactory serviceScopeFactory, IMessageRetriever messageRetriever)
     {
         _logger = logger;
         _serviceScopeFactory = serviceScopeFactory;
+        _messageRetriever = messageRetriever;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -22,36 +24,45 @@ public class Worker : BackgroundService
 
             using var scope = _serviceScopeFactory.CreateScope();
             var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-            var messageService = scope.ServiceProvider.GetRequiredService<IMessageService>();
+            var messageService = scope.ServiceProvider.GetRequiredService<IMessageRetriever>();
 
-            var response = await ReceiveMessagesAsync(mediator);
-
-            if (response.Messages.Any())
-            {
-                await ProcessMessagesAsync(response.Messages, mediator, messageService);
-            }
-            else
-            {
-                _logger.LogInformation("No messages received");
-            }
+            await RetrieveAndHandleMessages(stoppingToken, mediator, messageService);
 
             await Task.Delay(1000, stoppingToken);
         }
     }
 
-    private async Task<ReceiveMessagesResponse> ReceiveMessagesAsync(IMediator mediator)
+    private async Task RetrieveAndHandleMessages(
+        CancellationToken stoppingToken,
+        IMediator mediator,
+        IMessageRetriever messageService)
     {
-        var errorOr = await mediator.Send(new ReceiveMessagesRequest());
+        var response = await _messageRetriever.Get("weather-forecasts-created", 10);
 
-        if (errorOr.IsError)
+        if (response.IsError)
         {
-            _logger.LogError("Error receiving messages: {error}", errorOr.FirstError.Description);
+            var error = response.FirstError;
+
+            _logger.LogError("Error retrieving messages: {error}", error);
+
+            return;
         }
 
-        return errorOr.Value;
+        var messages = response.Value.ToArray();
+
+        if (!messages.Any())
+        {
+            _logger.LogInformation("No messages found");
+
+            await Task.Delay(1000, stoppingToken);
+
+            return;
+        }
+
+        await HandleMessagesAsync(messages, mediator, messageService, stoppingToken);
     }
 
-    private async Task ProcessMessagesAsync(IEnumerable<IMessage> messages, IMediator mediator, IMessageService messageService)
+    private async Task HandleMessagesAsync(IEnumerable<IMessage> messages, IMediator mediator, IMessageRetriever messageRetriever, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Received {amount} messages", messages.Count());
 
@@ -59,18 +70,22 @@ public class Worker : BackgroundService
         {
             _logger.LogInformation("Message: {message}", message);
 
-            try
-            {
-                await mediator.Publish(message);
-                _logger.LogInformation("Message processed: {message}", message);
-
-                await messageService.Delete(message);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, "Error processing message: {message}", message);
-                throw;
-            }
+            await HandleMessageAsync(message, mediator, messageRetriever, cancellationToken);
+        }
+    }
+    
+    private async Task HandleMessageAsync(IMessage message, IMediator mediator, IMessageRetriever messageRetriever, CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            await mediator.Publish(message, cancellationToken);
+            
+            await messageRetriever.Delete(message);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Error processing message: {message}", message);
+            throw;
         }
     }
 }
