@@ -5,26 +5,22 @@ namespace SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Upda
 
 public sealed class UpdateWeatherForecastCommandValidator : AbstractValidator<UpdateWeatherForecastsCommand>
 {
-    private readonly IStringLocalizer<UpdateWeatherForecastCommandValidator> _localizer;
-
     public UpdateWeatherForecastCommandValidator(IStringLocalizer<UpdateWeatherForecastCommandValidator> localizer)
     {
-        _localizer = localizer;
-
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage(_localizer["Id is required"]);
+            .WithMessage(localizer["required"]);
 
         RuleFor(command => command.Date)
             .NotEmpty()
-            .WithMessage(_localizer["Date is required"]);
+            .WithMessage(localizer["required"]);
 
         RuleFor(command => command.TemperatureC)
             .NotEmpty()
-            .WithMessage(_localizer["TemperatureC is required"]);
+            .WithMessage(localizer["required"]);
 
         RuleFor(command => command.Summary)
             .NotEmpty()
-            .WithMessage(_localizer["Summary is required"]);
+            .WithMessage(localizer["required"]);
     }
 }

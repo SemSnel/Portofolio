@@ -26,6 +26,6 @@ public sealed class WeatherForecastsCreatedMessageHandler : INotificationHandler
     {
         var count = await _weatherForecastsRepository.Count(cancellationToken);
         
-        _logger.LogInformation("There are {count} weather forecasts in the database", count.Value);
+        _logger.LogInformation("There are {Count} weather forecasts in the database", count.Value);
     }
 }

@@ -1,4 +1,6 @@
 using SemSnel.Portofolio.Domain.Common.Entities;
+using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
+using SemSnel.Portofolio.Domain.Common.Monads.Result;
 using SemSnel.Portofolio.Domain.WeatherForecasts.Events;
 
 namespace SemSnel.Portofolio.Domain.WeatherForecasts;
@@ -37,21 +39,17 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
         return forecasts;
     }
     
-    public WeatherForecast Update(DateOnly requestDate, int requestTemperatureC, string? requestSummary)
+    public ErrorOr<Success> Update(DateOnly requestDate, int requestTemperatureC, string? requestSummary)
     {
-        var forecasts = new WeatherForecast
-        {
-            Id = Id,
-            Date = requestDate,
-            TemperatureC = requestTemperatureC,
-            Summary = requestSummary
-        };
+        Date = requestDate;
+        TemperatureC = requestTemperatureC;
+        Summary = requestSummary;
         
-        var message = new WeatherForecastUpdatedEvent(forecasts.Id);
+        var message = new WeatherForecastUpdatedEvent(this.Id);
         
-        forecasts.AddDomainEvent(message);
+        AddDomainEvent(message);
         
-        return forecasts;
+        return Result.Success();
     }
 
     public void Cancel()

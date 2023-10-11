@@ -10,15 +10,15 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
     private const int LoggingThreshold = 500;
     private readonly Stopwatch _timer;
     private readonly ILogger<PerformanceBehaviour<TRequest, TResponse>> _logger;
-    private readonly ICurrentUser _currentUser;
+    private readonly ICurrentUserService _currentUserService;
 
     public PerformanceBehaviour(
         ILogger<PerformanceBehaviour<TRequest, TResponse>> logger,
-        ICurrentUser currentUser)
+        ICurrentUserService currentUserService)
     {
         _timer = new Stopwatch();
         _logger = logger;
-        _currentUser = currentUser;
+        _currentUserService = currentUserService;
     }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
@@ -35,7 +35,7 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
             return response;
         
         var requestName = typeof(TRequest).Name;
-        var userId = _currentUser.Id is not null ? _currentUser.Id.ToString() : string.Empty;
+        var userId = _currentUserService.Id is not null ? _currentUserService.Id.ToString() : string.Empty;
         var userName = string.Empty; // TODO: get user name
 
         _logger.LogWarning("CleanArchitecture Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",

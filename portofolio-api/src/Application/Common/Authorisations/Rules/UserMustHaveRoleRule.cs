@@ -4,25 +4,24 @@ namespace SemSnel.Portofolio.Application.Common.Authorisations.Rules;
 
 public sealed class UserMustHaveRoleRule<T> : IAuthorizationRule<T>
 {
-    private readonly ICurrentUser _currentUser;
+    private readonly ICurrentUserService _currentUserService;
     private readonly string _role;
 
-    public UserMustHaveRoleRule(ICurrentUser currentUser, string role)
+    public UserMustHaveRoleRule(ICurrentUserService currentUserService, string role)
     {
-        _currentUser = currentUser;
+        _currentUserService = currentUserService;
         _role = role;
     }
 
-    public AuthorizationResult Evaluate(AuthorizationContext<T> context)
+    public async Task<AuthorizationResult> EvaluateAsync(AuthorizationContext<T> context)
     {
-        var hasRole = _currentUser.HasRole(_role);
+        var hasRole = _currentUserService.HasRole(_role);
 
         if (hasRole)
         {
             return new AuthorizationResult()
             {
-                IsAuthorized = true,
-                Errors = new List<string>()
+                IsAuthorized = true
             };
         }
 

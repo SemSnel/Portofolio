@@ -1,5 +1,6 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using SemSnel.Portofolio.Application.Common.Authorisations.Authorizers;
 using SemSnel.Portofolio.Application.Common.Reflection;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
 
@@ -17,18 +18,18 @@ public static class ConfigureServices
             assembly
                 .GetTypes()
                 .Where(t => t is { IsClass: true, IsAbstract: false }
-                            && t.InheritsOrImplements(typeof(IAuthorizor<>)))
+                            && t.InheritsOrImplements(typeof(IAuthorizer<>)))
                 .ToList();
         
         foreach (var authorisor in authorisors)
         {
             var genericType = authorisor
                 .GetInterfaces()
-                .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IAuthorizor<>))
+                .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IAuthorizer<>))
                 .GetGenericArguments()
                 .First();
             
-            var genericInterface = typeof(IAuthorizor<>).MakeGenericType(genericType);
+            var genericInterface = typeof(IAuthorizer<>).MakeGenericType(genericType);
             
             services.AddScoped(genericInterface, authorisor);
         }

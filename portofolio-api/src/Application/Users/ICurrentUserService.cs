@@ -1,6 +1,6 @@
 namespace SemSnel.Portofolio.Application.Users;
 
-public interface ICurrentUser
+public interface ICurrentUserService
 {
     public Guid? Id { get; }
     public string? Name { get; }

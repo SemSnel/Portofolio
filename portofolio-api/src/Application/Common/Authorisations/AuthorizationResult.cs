@@ -6,6 +6,6 @@ namespace SemSnel.Portofolio.Application.Common.Authorisations;
 
 public class AuthorizationResult
 {
-    public bool IsAuthorized { get; set; }
-    public List<string> Errors { get; set; } = new List<string>();
+    public bool IsAuthorized { get; init; }
+    public IEnumerable<string> Errors { get; init; } = Enumerable.Empty<string>();
 }

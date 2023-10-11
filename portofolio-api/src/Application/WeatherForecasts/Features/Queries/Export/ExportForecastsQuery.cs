@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using SemSnel.Portofolio.Application.Common.Files;
 using SemSnel.Portofolio.Application.Common.Persistence;
+using SemSnel.Portofolio.Application.WeatherForecasts.Dtos;
 using SemSnel.Portofolio.Application.WeatherForecasts.Repositories;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.WeatherForecasts;

@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using Host.Configs;
 using Microsoft.EntityFrameworkCore;
 using SemSnel.Portofolio.Application;
@@ -25,14 +27,15 @@ services
     .AddAuthorizationServices(configuration);
 
 services
+    .AddApplicationInsightsTelemetry();
+
+services
         .AddSwaggerGen();
 
 var app = builder.Build();
 
 app
     .UseServer();
-
-// make scope to dispose of database context
 
 using var scope = app.Services.CreateScope();
 

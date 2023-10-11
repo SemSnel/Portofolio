@@ -10,7 +10,7 @@ namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
 public static class ConfigureServices
 {
-    public const string MigrationAssembly = "SemSnel.Portofolio.Migrations.{0}";
+    private const string MigrationAssembly = "SemSnel.Portofolio.Migrations.{0}";
     
     public static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration)
     {
@@ -24,7 +24,12 @@ public static class ConfigureServices
         services
             .AddTransient<IInterceptor, AuditableEntityInterceptor>()
             .AddTransient<IInterceptor, DispatchDomainEventsInterceptor>();
-
+        
+        // add repositories
+        services
+            .AddTransient<IUnitOfWork, UnitOfWork>();
+        
+        // add database context
         return services
             .AddScoped<IAppDbContextSeeder, AppDbContextSeeder>()
             .AddScoped<IAppContextInitialiser, AppContextInitialiser>()

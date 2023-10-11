@@ -17,7 +17,7 @@ public class CancelWeatherForecastCommandValidator : AbstractValidator<CancelWea
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage(localizer["Id must not be empty"]);
+            .WithMessage(localizer["not empty"]);
     }
 }
 
@@ -43,7 +43,7 @@ public class CancelWeatherForecastHandler : IRequestHandler<CancelWeatherForecas
         
         forecast.Cancel();
         
-        var updated = await _repository.Update(forecast, cancellationToken);
+        var updated = _repository.Delete(forecast, cancellationToken);
 
         if (updated.IsError)
         {

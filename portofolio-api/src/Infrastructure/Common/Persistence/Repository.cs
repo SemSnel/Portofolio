@@ -19,7 +19,7 @@ public abstract class Repository<TEntity, TId> :
     private readonly IAppDatabaseContext _context;
     private readonly IMapper _mapper;
     
-    public Repository(IAppDatabaseContext context, IMapper mapper)
+    protected Repository(IAppDatabaseContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
@@ -28,6 +28,11 @@ public abstract class Repository<TEntity, TId> :
     public IQueryable<TEntity> Get()
     {
         return _context.Set<TEntity, TId>();
+    }
+
+    public IQueryable<T> Get<T>(Expression<Func<TEntity, T>> selector)
+    {
+        return _context.Set<TEntity, TId>().Select(selector);
     }
 
     public async Task<ErrorOr<int>> Count(CancellationToken cancellationToken = default)
@@ -56,7 +61,7 @@ public abstract class Repository<TEntity, TId> :
             .SingleOrDefaultAsync(predicate, cancellationToken);
     }
 
-    public async Task<ErrorOr<Created<TId>>> Add(TEntity entity, CancellationToken cancellationToken = default)
+    public ErrorOr<Created<TId>> Add(TEntity entity, CancellationToken cancellationToken = default)
     {
         var entry = _context.Set<TEntity, TId>().Add(entity);
 
@@ -64,22 +69,18 @@ public abstract class Repository<TEntity, TId> :
         {
             return Error.Failure("Failed to add entity to database");
         }
-        
-        await _context.SaveChangesAsync(cancellationToken);
-        
+
         return Result.Created(entry.Entity.Id);
     }
 
-    public async Task<ErrorOr<Created>> AddRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+    public ErrorOr<Created> AddRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
     {
         _context.Set<TEntity, TId>().AddRange(entities);
         
-        await _context.SaveChangesAsync(cancellationToken);
-
         return Result.Created();
     }
 
-    public async Task<ErrorOr<Updated<TId>>> Update(TId id, TEntity entity, CancellationToken cancellationToken = default)
+    public ErrorOr<Updated<TId>> Update(TId id, TEntity entity, CancellationToken cancellationToken = default)
     {
         var entry = _context.Set<TEntity, TId>().Update(entity);
         
@@ -88,37 +89,28 @@ public abstract class Repository<TEntity, TId> :
             return Error.NotFound();
         }
         
-        await _context.SaveChangesAsync(cancellationToken);
-        
         return Result.Updated<TId>(entry.Entity.Id);
     }
 
-    public async Task<ErrorOr<Updated<TId>>> Update(TEntity entity, CancellationToken cancellationToken = default)
+    public ErrorOr<Updated<TId>> Update(TEntity entity, CancellationToken cancellationToken = default)
     {
-        var entry = _context.Set<TEntity, TId>().Update(entity);
+        _context
+            .Set<TEntity, TId>()
+            .Update(entity);
         
-        if (entry is null)
-        {
-            return Error.NotFound();
-        }
-        
-        await _context.SaveChangesAsync(cancellationToken);
-        
-        return Result.Updated<TId>(entry.Entity.Id);
+        return Result.Updated<TId>(entity.Id);
     }
 
-    public async Task<ErrorOr<Updated>> UpdateRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+    public ErrorOr<Updated> UpdateRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
     {
         _context
             .Set<TEntity, TId>()
             .UpdateRange(entities);
-
-        await _context.SaveChangesAsync(cancellationToken);
         
         return Result.Updated();
     }
 
-    public async Task<ErrorOr<Deleted>> Delete(TId id, CancellationToken cancellationToken = default)
+    public ErrorOr<Deleted> Delete(TId id, CancellationToken cancellationToken = default)
     {
         var entity = _context.Set<TEntity, TId>().Find(id);
         
@@ -129,12 +121,10 @@ public abstract class Repository<TEntity, TId> :
         
         _context.Set<TEntity, TId>().Remove(entity);
         
-        await _context.SaveChangesAsync(cancellationToken);
-        
         return Result.Deleted();
     }
 
-    public async Task<ErrorOr<Deleted>> Delete(TEntity entity, CancellationToken cancellationToken = default)
+    public ErrorOr<Deleted> Delete(TEntity entity, CancellationToken cancellationToken = default)
     {
         var entry = _context.Set<TEntity, TId>().Remove(entity);
         
@@ -143,16 +133,14 @@ public abstract class Repository<TEntity, TId> :
             return Error.NotFound();
         }
         
-        await _context.SaveChangesAsync(cancellationToken);
-        
         return Result.Deleted();
     }
 
-    public async Task<ErrorOr<Deleted>> DeleteRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
+    public ErrorOr<Deleted> DeleteRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
     {
-        _context.Set<TEntity, TId>().RemoveRange(entities);
-        
-        await _context.SaveChangesAsync(cancellationToken);
+        _context
+            .Set<TEntity, TId>()
+            .RemoveRange(entities);
         
         return Result.Deleted();
     }

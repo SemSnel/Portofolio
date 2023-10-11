@@ -3,7 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace SemSnel.Portofolio.Domain.Common.Entities;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
+public abstract class Entity<TId> : 
+    IEquatable<Entity<TId>>,
+    IHasDomainEvents
     where TId : notnull
 {
     [JsonPropertyOrder(0)]

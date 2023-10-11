@@ -9,14 +9,14 @@ namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Intercep
 
 public class AuditableEntityInterceptor : SaveChangesInterceptor
 {
-    private readonly ICurrentUser _currentUser;
+    private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeProvider _dateTime;
 
     public AuditableEntityInterceptor(
-        ICurrentUser currentUser,
+        ICurrentUserService currentUserService,
         IDateTimeProvider dateTime)
     {
-        _currentUser = currentUser;
+        _currentUserService = currentUserService;
         _dateTime = dateTime;
     }
 
@@ -42,15 +42,16 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
         {
             if (entry.State == EntityState.Added)
             {
-                entry.Entity.CreatedBy = _currentUser.Id;
+                entry.Entity.CreatedBy = _currentUserService.Id;
                 entry.Entity.CreatedOn = _dateTime.Now();
-            } 
-
-            if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
-            {
-                entry.Entity.LastModifiedBy = _currentUser.Id;
-                entry.Entity.LastModifiedOn = _dateTime.Now();
             }
+
+            if (entry.State != EntityState.Added && entry.State != EntityState.Modified &&
+                !entry.HasChangedOwnedEntities()) 
+                continue;
+            
+            entry.Entity.LastModifiedBy = _currentUserService.Id;
+            entry.Entity.LastModifiedOn = _dateTime.Now();
         }
     }
 }
@@ -61,5 +62,5 @@ public static class Extensions
         entry.References.Any(r => 
             r.TargetEntry != null && 
             r.TargetEntry.Metadata.IsOwned() && 
-            (r.TargetEntry.State == EntityState.Added || r.TargetEntry.State == EntityState.Modified));
+            r.TargetEntry.State is EntityState.Added or EntityState.Modified);
 }

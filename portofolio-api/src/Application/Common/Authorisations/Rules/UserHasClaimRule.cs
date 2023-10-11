@@ -4,20 +4,20 @@ namespace SemSnel.Portofolio.Application.Common.Authorisations.Rules;
 
 public sealed class UserHasClaimRule<T> : IAuthorizationRule<T>
 {
-    private readonly ICurrentUser _currentUser;
+    private readonly ICurrentUserService _currentUserService;
     private readonly string _claimType;
     private readonly string _claimValue;
     
-    public UserHasClaimRule(ICurrentUser currentUser, string claimType, string claimValue)
+    public UserHasClaimRule(ICurrentUserService currentUserService, string claimType, string claimValue)
     {
-        _currentUser = currentUser;
+        _currentUserService = currentUserService;
         _claimType = claimType;
         _claimValue = claimValue;
     }
     
-    public AuthorizationResult Evaluate(AuthorizationContext<T> context)
+    public async Task<AuthorizationResult> EvaluateAsync(AuthorizationContext<T> context)
     {
-        var hasClaim = _currentUser.HasClaim(_claimType, _claimValue);
+        var hasClaim = _currentUserService.HasClaim(_claimType, _claimValue);
 
         if (hasClaim)
         {

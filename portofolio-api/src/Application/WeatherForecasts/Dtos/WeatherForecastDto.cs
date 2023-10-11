@@ -1,4 +1,4 @@
-namespace SemSnel.Portofolio.Application.WeatherForecasts;
+namespace SemSnel.Portofolio.Application.WeatherForecasts.Dtos;
 
 public class WeatherForecastDto
 {
@@ -11,8 +11,4 @@ public class WeatherForecastDto
     public int TemperatureF { get; init;}
 
     public string? Summary { get; init; }
-    
-    public DateTime CreatedOn { get; init; }
-    
-    public DateTime LastModifiedOn { get; init; }
 }

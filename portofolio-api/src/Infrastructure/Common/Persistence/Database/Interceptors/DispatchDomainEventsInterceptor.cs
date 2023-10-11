@@ -1,16 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SemSnel.Portofolio.Domain.Common.Entities;
+using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.Persistence.Entities;
+using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.PubSub.Factories;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Interceptors;
 
 public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
 {
-    private readonly IMediator _mediator;
+    private readonly IOutboxMessageFactory _outboxMessageFactory;
 
-    public DispatchDomainEventsInterceptor(IMediator mediator)
+    public DispatchDomainEventsInterceptor(IOutboxMessageFactory outboxMessageFactory)
     {
-        _mediator = mediator;
+        _outboxMessageFactory = outboxMessageFactory;
     }
 
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
@@ -28,26 +30,38 @@ public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
         return await base.SavingChangesAsync(eventData, result, cancellationToken);
     }
 
-    public async Task DispatchDomainEvents(DbContext? context)
+    private Task DispatchDomainEvents(DbContext? context)
     {
-        if (context == null) return;
+        if (context == null) 
+            return Task.CompletedTask;
 
         var entities = context.ChangeTracker
             .Entries<IHasDomainEvents>()
             .Where(e => e.Entity.DomainEvents.Any())
-            .Select(e => e.Entity);
+            .Select(e => e.Entity)
+            .ToArray();
 
         var domainEvents = entities
-            .SelectMany(e => e.DomainEvents)
-            .ToList();
+            .SelectMany(entity =>
+            {
+                var events = entity
+                    .DomainEvents
+                    .ToArray();
+                
+                entity.ClearDomainEvents();
 
-        entities
-            .ToList()
-            .ForEach(e => e.ClearDomainEvents());
-
-        var tasks = domainEvents
-            .Select((domainEvent) => _mediator.Publish(domainEvent));
+                return events;
+            })
+            .ToArray();
         
-        await Task.WhenAll(tasks);
+        var outboxMessages = domainEvents
+            .Select(
+                domainEvent => _outboxMessageFactory.Create(domainEvent)
+                )
+            .ToArray();
+        
+        context.Set<OutBoxMessage>().AddRange(outboxMessages);
+        
+        return Task.CompletedTask;
     }
 }

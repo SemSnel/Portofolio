@@ -10,20 +10,20 @@ public sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TR
     where TResponse : IErrorOr
 {
     private readonly ILogger<LoggingBehaviour<TRequest, TResponse>> _logger;
-    private readonly ICurrentUser _currentUser;
+    private readonly ICurrentUserService _currentUserService;
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public LoggingBehaviour(ILogger<LoggingBehaviour<TRequest, TResponse>> logger, ICurrentUser currentUser, IDateTimeProvider dateTimeProvider)
+    public LoggingBehaviour(ILogger<LoggingBehaviour<TRequest, TResponse>> logger, ICurrentUserService currentUserService, IDateTimeProvider dateTimeProvider)
     {
         _logger = logger;
-        _currentUser = currentUser;
+        _currentUserService = currentUserService;
         _dateTimeProvider = dateTimeProvider;
     }
 
 
     public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        var userId = _currentUser.Id is not null ? "Anonymous" : _currentUser.Id.ToString();
+        var userId = _currentUserService.Id is not null ? "Anonymous" : _currentUserService.Id.ToString();
         
         var now = _dateTimeProvider.Now;
         

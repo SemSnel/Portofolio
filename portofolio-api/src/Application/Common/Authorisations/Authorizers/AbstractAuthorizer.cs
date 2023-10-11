@@ -1,39 +1,39 @@
-namespace SemSnel.Portofolio.Application.Common.Authorisations.Authorizors;
+namespace SemSnel.Portofolio.Application.Common.Authorisations.Authorizers;
 
-public abstract class AbstractAuthorizor<T> : IAuthorizor<T>
+public abstract class AbstractAuthorizer<T> : IAuthorizer<T>
 {
     private List<IAuthorizationRule<T>> Rules { get; } = new List<IAuthorizationRule<T>>();
 
-    public AbstractAuthorizor<T> AddRule(IAuthorizationRule<T> rule)
+    public AbstractAuthorizer<T> AddRule(IAuthorizationRule<T> rule)
     {
         Rules.Add(rule);
         
         return this;
     }
 
-    public Task<AuthorizationResult> AuthorizeAsync(AuthorizationContext<T> context,
+    public async Task<AuthorizationResult> AuthorizeAsync(AuthorizationContext<T> context,
         CancellationToken cancellationToken)
     {
         foreach (var rule in Rules)
         {
-            var ruleResult = rule.Evaluate(context);
+            var ruleResult = await rule.EvaluateAsync(context);
             
             if (ruleResult.IsAuthorized)
                 continue;
-            
-            return Task.FromResult(
+
+            return
                 new AuthorizationResult()
                 {
                     IsAuthorized = false,
                     Errors = ruleResult.Errors
-                });
+                };
         }
 
-        return Task.FromResult(
+        return
             new AuthorizationResult()
             {
                 IsAuthorized = true,
                 Errors = new List<string>()
-            });
+            };
     }
 }

@@ -19,18 +19,22 @@ public sealed class
     CreateWeatherForecastCommandHandler : IRequestHandler<CreateWeatherForecastCommand, ErrorOr<Created<Guid>>>
 {
     private readonly IWeatherForecastsRepository _writeRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public CreateWeatherForecastCommandHandler(IWeatherForecastsRepository writeRepository)
+    public CreateWeatherForecastCommandHandler(IWeatherForecastsRepository writeRepository, IUnitOfWork unitOfWork)
     {
         _writeRepository = writeRepository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<ErrorOr<Created<Guid>>> Handle(CreateWeatherForecastCommand request, CancellationToken cancellationToken)
     {
         var forecasts = WeatherForecast.Create(request.Date, request.TemperatureC, request.Summary);
         
-        var errorOr = await _writeRepository.Add(forecasts, cancellationToken);
+        var createdResult = _writeRepository.Add(forecasts, cancellationToken);
+        
+        var saveResult = await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return errorOr;
+        return saveResult.IsError ? saveResult.FirstError : createdResult;
     }
 }

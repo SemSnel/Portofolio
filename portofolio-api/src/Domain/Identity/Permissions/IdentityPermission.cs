@@ -1,6 +1,3 @@
 namespace SemSnel.Portofolio.Domain.Identity.Permissions;
 
-public sealed class IdentityPermission
-{
-    
-}
+public sealed record IdentityPermission();

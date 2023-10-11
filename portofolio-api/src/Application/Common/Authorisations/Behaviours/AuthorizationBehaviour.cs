@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using SemSnel.Portofolio.Application.Common.Authorisations.Authorizers;
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 
 namespace SemSnel.Portofolio.Application.Common.Authorisations;
@@ -7,10 +8,10 @@ public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRe
     where TRequest : IRequest<TResponse>
     where TResponse : IErrorOr
 {
-    private readonly IEnumerable<IAuthorizor<TRequest>>? _authorizors;
+    private readonly IEnumerable<IAuthorizer<TRequest>>? _authorizors;
     private readonly ILogger<AuthorizationBehaviour<TRequest, TResponse>> _logger;
 
-    public AuthorizationBehaviour(IEnumerable<IAuthorizor<TRequest>>? authorizors, ILogger<AuthorizationBehaviour<TRequest, TResponse>> logger)
+    public AuthorizationBehaviour(IEnumerable<IAuthorizer<TRequest>>? authorizors, ILogger<AuthorizationBehaviour<TRequest, TResponse>> logger)
     {
         _authorizors = authorizors;
         _logger = logger;

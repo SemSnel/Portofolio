@@ -2,12 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SemSnel.Portofolio.Domain.Common.Entities;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
+using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.Persistence.Entities;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
 public class AppDatabaseContext : DbContext, IAppDatabaseContext
 {
-    // inject interceptors
     private readonly IEnumerable<IInterceptor> _interceptors;
     
     public AppDatabaseContext(DbContextOptions<AppDatabaseContext> options, IEnumerable<IInterceptor> interceptors) : base(options)
@@ -16,7 +16,8 @@ public class AppDatabaseContext : DbContext, IAppDatabaseContext
     }
     
     public DbSet<WeatherForecast> WeatherForecasts => Set<WeatherForecast>();
-    
+    public DbSet<OutBoxMessage> OutboxMessages => Set<OutBoxMessage>();
+
     public DbSet<TEntity> Set<TEntity, TId>() where TEntity : Entity<TId> where TId : notnull
     {
         return Set<TEntity>();
@@ -38,5 +39,5 @@ public class AppDatabaseContext : DbContext, IAppDatabaseContext
     {
         return Database.MigrateAsync(cancellationToken);
     }
-
 }
+

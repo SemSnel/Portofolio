@@ -1,4 +1,6 @@
-namespace SemSnel.Portofolio.Application.Common.DateTime;
+using SemSnel.Portofolio.Application.Common.DateTime;
+
+namespace SemSnel.Portofolio.Infrastructure.Common.DateTime;
 
 public sealed class DateTimeProvider : IDateTimeProvider
 {
