@@ -1,7 +1,7 @@
 using SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 using SemSnel.Portofolio.Domain.Common.Monads.Result;
 
-namespace SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.PubSub;
+namespace SemSnel.Portofolio.Infrastructure.Common.OutBoxMessages.PubSub;
 
 /// <summary>
 /// Interface for outbox subscribers.

@@ -5,5 +5,4 @@
 /// </summary>
 public abstract class EventBase : INotification
 {
-    public Guid EventId { get; } = Guid.NewGuid();
 }

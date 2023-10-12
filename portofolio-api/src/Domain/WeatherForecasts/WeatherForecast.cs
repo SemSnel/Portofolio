@@ -32,7 +32,7 @@ public class WeatherForecast : AggregateRoot<Guid>, IAuditableEntity
             Summary = requestSummary
         };
         
-        var message = new WeatherForecastCreatedEvent(forecasts.Id);
+        var message = new WeatherForecastCreatedEvent(forecasts.Id, forecasts.Summary ?? string.Empty, forecasts.TemperatureC);
         
         forecasts.AddDomainEvent(message);
         

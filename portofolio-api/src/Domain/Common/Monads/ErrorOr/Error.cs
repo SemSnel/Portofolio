@@ -103,4 +103,8 @@ public readonly record struct Error
         string code = "General.Forbidden",
         string description = "A 'Forbidden' error has occurred.") =>
         new(code, description, ErrorType.Forbidden);
+    
+    public static Error NoError() => new(
+        "General.NoError","No error occurred.", ErrorType.NoError); 
+    
 }

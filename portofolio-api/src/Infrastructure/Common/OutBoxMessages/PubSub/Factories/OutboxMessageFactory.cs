@@ -19,14 +19,14 @@ public class OutboxMessageFactory : IOutboxMessageFactory
 
     public OutBoxMessage Create(EventBase domainEvent)
     {
-        var hasMessageType = _dictionary.TryGetKey(domainEvent.GetType(), out var messageType);
+        var hasMessageTypeName = _dictionary.TryGetKey(domainEvent.GetType(), out var messageType);
         
-        if (!hasMessageType)
+        if (!hasMessageTypeName)
         {
             throw new ArgumentException("Message type not found.");
         }
         
-        var messageContent = JsonSerializer.Serialize(domainEvent);
+        var messageContent = JsonSerializer.Serialize<object>(domainEvent);
         
         if (messageContent is null)
         {

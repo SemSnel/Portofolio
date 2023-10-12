@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
+using SemSnel.Portofolio.Domain.WeatherForecasts.Events;
 
 namespace SemSnel.Portofolio.Application.WeatherForecasts.Features.Events.Created;
 

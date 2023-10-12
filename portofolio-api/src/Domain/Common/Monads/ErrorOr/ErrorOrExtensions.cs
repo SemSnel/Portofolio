@@ -6,4 +6,19 @@ public static class ErrorOrExtensions
     {
         return value;
     }
+    
+    public static ErrorOr<TValue> From<TValue>(Exception exception)
+    {
+        return Error.Unexpected(exception.Message);
+    }
+    
+    public static ErrorOr<TValue> From<TValue>(Error error)
+    {
+        return error;
+    }
+    
+    public static ErrorOr<TValue> From<TValue>(List<Error> errors)
+    {
+        return errors;
+    }
 }

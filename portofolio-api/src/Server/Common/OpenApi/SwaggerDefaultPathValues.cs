@@ -11,7 +11,6 @@ public class SwaggerDefaultPathValues : IDocumentFilter
 
         foreach (var (key, value) in swaggerDoc.Paths)
         {
-            
             paths.Add(key.Replace("{version}", swaggerDoc.Info.Version, StringComparison.InvariantCulture), value);
         }
         

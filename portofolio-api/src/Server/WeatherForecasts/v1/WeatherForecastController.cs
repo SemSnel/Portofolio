@@ -1,5 +1,3 @@
-using Bogus;
-using Bogus.DataSets;
 using Microsoft.AspNetCore.Mvc;
 using SemSnel.Portofolio.Application.WeatherForecasts.Dtos;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create;
@@ -7,7 +5,9 @@ using SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Update;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get;
 using SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.GetById;
+using SemSnel.Portofolio.Server.Common.Idempotency;
 using SemSnel.Portofolio.Server.Common.Monads;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace SemSnel.Portofolio.Server.WeatherForecasts.v1;
 
@@ -55,6 +55,20 @@ public class WeatherForecastController : ControllerBase
     [MapToApiVersion("1.0")]
     [HttpPost]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+    //idempotency filter
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    // add idempotency filter and idempotency header to swagger
+    [IdempotencyFilter]
+    [SwaggerOperation(
+        Summary = "Creates a new weather forecast",
+        Description = "Creates a new weather forecast",
+        OperationId = "WeatherForecast.Create",
+        Tags = new[] { "WeatherForecastEndpoint" })
+    ]
     public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
     {
         var response = await _mediator.Send(command);
@@ -83,7 +97,8 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("export")]
     public async Task<IActionResult> Export([FromQuery] ExportForecastsQuery query)
     {
-        var response = await _mediator.Send(query);
+        var response = await _mediator
+            .Send(query);
         
         return  response.ToFileContentResult();
     }

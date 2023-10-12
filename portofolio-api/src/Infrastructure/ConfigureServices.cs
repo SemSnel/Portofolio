@@ -1,6 +1,8 @@
 using SemSnel.Portofolio.Domain.WeatherForecasts;
+using SemSnel.Portofolio.Infrastructure.Common.Caching;
 using SemSnel.Portofolio.Infrastructure.Common.DateTime;
 using SemSnel.Portofolio.Infrastructure.Common.Files;
+using SemSnel.Portofolio.Infrastructure.Common.Idempotency;
 using SemSnel.Portofolio.Infrastructure.Common.Mapping;
 using SemSnel.Portofolio.Infrastructure.Common.Mediatr;
 using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers;
@@ -22,9 +24,11 @@ public static class ConfigureServices
         // add common services
         return services
             .AddDatabaseContext(configuration)
+            .AddIdempotency(configuration)
+            .AddCaching(configuration)
             .AddFileServices(configuration)
             .AddValidationServices(configuration)
-            .AddMessageBroker(configuration)
+            .AddOutBoxMessages(configuration)
             .AddDateTimeServices(configuration)
             .AddMediator(configuration)
             .AddMapping(configuration)

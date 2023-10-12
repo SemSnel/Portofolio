@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SemSnel.Portofolio.Domain.Common.Entities;
 using SemSnel.Portofolio.Domain.WeatherForecasts;
+using SemSnel.Portofolio.Infrastructure.Common.Idempotency.Entities;
 using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.Persistence.Entities;
 
 namespace SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
@@ -17,6 +18,7 @@ public class AppDatabaseContext : DbContext, IAppDatabaseContext
     
     public DbSet<WeatherForecast> WeatherForecasts => Set<WeatherForecast>();
     public DbSet<OutBoxMessage> OutboxMessages => Set<OutBoxMessage>();
+    public DbSet<IdempotentRequest> IdempotentRequests => Set<IdempotentRequest>();
 
     public DbSet<TEntity> Set<TEntity, TId>() where TEntity : Entity<TId> where TId : notnull
     {
@@ -25,7 +27,8 @@ public class AppDatabaseContext : DbContext, IAppDatabaseContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDatabaseContext).Assembly);
+        modelBuilder
+            .ApplyConfigurationsFromAssembly(typeof(AppDatabaseContext).Assembly);
     }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

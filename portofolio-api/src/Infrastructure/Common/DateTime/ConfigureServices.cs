@@ -6,6 +6,6 @@ public static class ConfigureServices
 {
     public static IServiceCollection AddDateTimeServices(this IServiceCollection services, IConfiguration configuration)
     {
-        return services.AddScoped<IDateTimeProvider, DateTimeProvider>();
+        return services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
     }
 }

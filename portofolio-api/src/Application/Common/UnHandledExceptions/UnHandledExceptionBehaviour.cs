@@ -19,13 +19,21 @@ public class UnHandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavio
     {
         try
         {
-            return await next();
+            var result = await next();
+
+            if (result.IsError)
+            {
+                _logger.LogError("An error occurred while handling the request: {Request}", request);
+            }
+            
+            return result;
         }
         catch (Exception exception)
         {
+            // log the exception
             _logger.LogError(exception, "An unhandled exception occurred");
 
-            return (dynamic)Error.Unexpected();
+            throw;
         }
     }
 }

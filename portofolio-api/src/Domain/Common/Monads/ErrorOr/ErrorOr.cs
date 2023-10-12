@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 
 /// <summary>

@@ -8,6 +8,7 @@ using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.Persistence.Reposi
 using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.PubSub;
 using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.PubSub.Dictionaries;
 using SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.PubSub.Factories;
+using SemSnel.Portofolio.Infrastructure.Common.OutBoxMessages.PubSub;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
@@ -15,7 +16,7 @@ namespace SemSnel.Portofolio.Infrastructure.Common.MessageBrokers;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddMessageBroker(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddOutBoxMessages(this IServiceCollection services, IConfiguration configuration)
     {
         services
             .AddSingleton<OutBoxMessageTypeScanner>()

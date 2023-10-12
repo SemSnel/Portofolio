@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 
@@ -11,9 +12,11 @@ using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
 namespace SemSnel.Portofolio.Migrations.SqlServer.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    partial class AppDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20231011131701_AddOutBoxMessages")]
+    partial class AddOutBoxMessages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,24 +75,6 @@ namespace SemSnel.Portofolio.Migrations.SqlServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WeatherForecasts", (string)null);
-                });
-
-            modelBuilder.Entity("SemSnel.Portofolio.Infrastructure.Common.Idempotency.Entities.IdempotentRequest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdempotentRequests", "dbo");
                 });
 
             modelBuilder.Entity("SemSnel.Portofolio.Infrastructure.Common.MessageBrokers.Persistence.Entities.OutBoxMessage", b =>

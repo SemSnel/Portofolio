@@ -2,7 +2,6 @@ using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using SemSnel.Portofolio.Server.Common.Versioning;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace SemSnel.Portofolio.Server.Common.OpenApi;
 
@@ -16,10 +15,13 @@ public static class ConfigureServices
             {
                 options.OperationFilter<SwaggerDefaultValues>();
                 options.DocumentFilter<SwaggerDefaultPathValues>();
+                
+                // add idempotency key header
+                options.OperationFilter<IdempotencyKeyHeaderOperationFilter>();
+                options.SchemaFilter<GuidSchemaFilter>();
             })
             .ConfigureOptions<ConfigureSwaggerVersioningOptions>();
-
-
+        
         return services;
     }
     

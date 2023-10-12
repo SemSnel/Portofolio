@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using SemSnel.Portofolio.Application.Common.Caching;
 using SemSnel.Portofolio.Application.Common.Files;
 using SemSnel.Portofolio.Application.Common.Persistence;
 using SemSnel.Portofolio.Application.WeatherForecasts.Dtos;
@@ -9,8 +10,13 @@ using SemSnel.Portofolio.Domain.WeatherForecasts;
 
 namespace SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Export;
 
-public class ExportForecastsQuery : IRequest<ErrorOr<FileDto>>
+public class ExportForecastsQuery : 
+    IRequest<ErrorOr<FileDto>>, 
+    ICacheableRequest
 {
+    public string GetCacheKey() => nameof(ExportForecastsQuery);
+    
+    public TimeSpan? GetTimeToLive() => TimeSpan.FromDays(1);
 }
 
 public sealed class ExportForecastsHandler : IRequestHandler<ExportForecastsQuery, ErrorOr<FileDto>>

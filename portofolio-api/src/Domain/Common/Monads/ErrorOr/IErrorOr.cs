@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace SemSnel.Portofolio.Domain.Common.Monads.ErrorOr;
 
 public interface IErrorOr<TValue> : IErrorOr

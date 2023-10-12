@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Options;
 using SemSnel.Portofolio.Application.Common.Persistence;
 using SemSnel.Portofolio.Domain.Common.Entities;
 using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database.Initialisers;
@@ -33,11 +34,11 @@ public static class ConfigureServices
         return services
             .AddScoped<IAppDbContextSeeder, AppDbContextSeeder>()
             .AddScoped<IAppContextInitialiser, AppContextInitialiser>()
-            .AddDbContext<IAppDatabaseContext, AppDatabaseContext>(options =>
+            .AddDbContext<IAppDatabaseContext, AppDatabaseContext>((serviceProvider, options) =>
             {
-                var databaseSettings = configuration
-                                           .GetSection(DatabaseSettings.Section)
-                                           .Get<DatabaseSettings>() ?? throw new ArgumentNullException("No database settings found");
+                var databaseSettings = serviceProvider
+                    .GetRequiredService<IOptions<DatabaseSettings>>()
+                    .Value;
                 
                 var connectionString = databaseSettings.ConnectionString;
                 var provider = databaseSettings.Provider;
