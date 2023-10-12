@@ -25,16 +25,20 @@ var builder = Host
         }
     );
 
-var host = builder.Build();
+var host = builder
+    .Build();
 
+using var scope = host
+    .Services
+    .CreateScope();
 
-// make scope to dispose of database context
+var context = scope
+    .ServiceProvider
+    .GetRequiredService<IAppDatabaseContext>();
 
-using var scope = host.Services.CreateScope();
-
-var context = scope.ServiceProvider.GetRequiredService<IAppDatabaseContext>();
-
-var initialiser = scope.ServiceProvider.GetRequiredService<IAppContextInitialiser>();
+var initialiser = scope
+    .ServiceProvider
+    .GetRequiredService<IAppContextInitialiser>();
 
 await initialiser
     .Initialise(context);
