@@ -1,0 +1,689 @@
+﻿2023-11-12 16:38:10.626 +01:00 [WRN] The foreign key property 'DocumentProperty.DocumentId1' was created in shadow state because a conflicting property with the simple name 'DocumentId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-11-12 16:38:10.677 +01:00 [WRN] The entity type 'InboxMessage' is configured to use schema 'dbo', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.678 +01:00 [WRN] The entity type 'DocumentPropertyDataType' is configured to use schema 'Documents', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.679 +01:00 [WRN] The entity type 'DocumentTypeProperty' is configured to use schema 'Documents', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.679 +01:00 [WRN] The entity type 'DocumentType' is configured to use schema 'Documents', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.679 +01:00 [WRN] The entity type 'Document' is configured to use schema 'Documents', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.679 +01:00 [WRN] The entity type 'DocumentProperty' is configured to use schema 'Documents', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.679 +01:00 [WRN] The entity type 'DocumentPropertyType' is configured to use schema 'Documents', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.680 +01:00 [WRN] The entity type 'IdempotentRequest' is configured to use schema 'dbo', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.680 +01:00 [WRN] The entity type 'DomainMessage' is configured to use schema 'dbo', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.680 +01:00 [WRN] The entity type 'OutboxMessage' is configured to use schema 'dbo', but SQLite does not support schemas. This configuration will be ignored by the SQLite provider.
+2023-11-12 16:38:10.804 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2023-11-12 16:38:10.810 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2023-11-12 16:38:10.816 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-12 16:38:10.825 +01:00 [INF] No migrations were applied. The database is already up to date.
+2023-11-12 16:38:10.921 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "WeatherForecasts" AS "w"
+    WHERE "w"."DeletedOn" IS NULL)
+2023-11-12 16:38:10.927 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Media" AS "m")
+2023-11-12 16:38:10.934 +01:00 [INF] User profile is available. Using '/Users/sem.snel/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2023-11-12 16:38:11.241 +01:00 [INF] Now listening on: https://localhost:7063
+2023-11-12 16:38:11.242 +01:00 [INF] Now listening on: http://localhost:5236
+2023-11-12 16:38:11.243 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-12 16:38:11.244 +01:00 [INF] Hosting environment: Development
+2023-11-12 16:38:11.244 +01:00 [INF] Content root path: /Users/sem.snel/Documents/Avans/Portofolio/portofolio-api/src/Server.API.Host
+2023-11-12 16:38:11.574 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/swagger/index.html - null null
+2023-11-12 16:38:11.630 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/swagger/index.html - 200 null text/html;charset=utf-8 57.2095ms
+2023-11-12 16:38:11.776 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/swagger/v1/swagger.json - null null
+2023-11-12 16:38:11.907 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 131.2278ms
+2023-11-12 16:38:39.629 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:38:39.681 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:38:39.696 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:38:39.711 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:38:39.727 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:38:39.733 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:38:39.830 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM "WeatherForecasts" AS "w"
+WHERE "w"."DeletedOn" IS NULL
+2023-11-12 16:38:39.838 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-11-12 16:38:39.839 +01:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-11-12 16:38:39.887 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "w"."Id", "w"."Date", CAST("w"."TemperatureC" AS INTEGER), "w"."CreatedBy", "w"."CreatedOn", "w"."DeletedBy", "w"."DeletedOn", "w"."LastModifiedBy", "w"."LastModifiedOn", "w"."Summary", "w"."TemperatureC", "w"."Summary" IS NULL
+FROM "WeatherForecasts" AS "w"
+WHERE "w"."DeletedOn" IS NULL
+LIMIT @__p_1 OFFSET @__p_0
+2023-11-12 16:38:39.910 +01:00 [INF] Cache miss for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:38:39.910 +01:00 [INF] Setting cache for key GetWeatherforecastsQuery:1:10 with time to live "1.00:00:00"
+2023-11-12 16:38:39.913 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (184 milliseconds) e4d0e120-4e73-4403-aa64-91a48e008bb0  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:38:39.917 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 204.123ms.
+2023-11-12 16:38:39.919 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:38:39.924 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 226.6829ms
+2023-11-12 16:38:39.925 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:38:39.926 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 298.1082ms
+2023-11-12 16:40:44.641 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:40:44.646 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:40:44.648 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:40:44.652 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:40:44.657 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:40:44.658 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:40:44.678 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:40:44.678 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:40:44.679 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (21 milliseconds) 1cea1b78-1c92-4b02-b561-29eee381c277  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:40:44.679 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 26.3587ms.
+2023-11-12 16:40:44.680 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:40:44.680 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 32.1435ms
+2023-11-12 16:40:44.681 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:40:44.681 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 40.1582ms
+2023-11-12 16:40:47.497 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:40:47.501 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:40:47.502 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:40:47.504 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:40:47.510 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:40:47.511 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:40:47.514 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:40:47.515 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:40:47.516 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (5 milliseconds) 137493d2-a884-4a6e-8302-975fefaa5a6f  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:40:47.517 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12.2329ms.
+2023-11-12 16:40:47.518 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:40:47.519 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 15.7942ms
+2023-11-12 16:40:47.520 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:40:47.521 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 24.1615ms
+2023-11-12 16:44:46.396 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:46.399 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:46.400 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:46.401 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:46.402 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:46.402 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:46.403 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:46.403 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:46.404 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) a36f9052-c1aa-4992-abe8-66ec6cd826cd  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:46.405 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.7038ms.
+2023-11-12 16:44:46.405 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:46.406 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 5.3582ms
+2023-11-12 16:44:46.406 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:46.406 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 10.153ms
+2023-11-12 16:44:48.256 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:48.258 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.259 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:48.260 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:48.260 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:48.261 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:48.262 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.263 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.263 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) a8e3c95f-7244-427d-8d62-feff53592c2d  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:48.265 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.4919ms.
+2023-11-12 16:44:48.265 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:48.266 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 6.7716ms
+2023-11-12 16:44:48.266 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.267 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 10.9799ms
+2023-11-12 16:44:48.554 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:48.554 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.555 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:48.555 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:48.555 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:48.556 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:48.556 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.556 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.557 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 441170a7-fc2f-43fe-b427-989499d91ffe  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:48.557 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.9481ms.
+2023-11-12 16:44:48.557 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:48.558 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.755ms
+2023-11-12 16:44:48.558 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.558 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 4.2857ms
+2023-11-12 16:44:48.746 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:48.747 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.747 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:48.748 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:48.748 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:48.748 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:48.749 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.749 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.749 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 2ffea37b-204e-4f0f-bd11-d89f3919fafa  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:48.750 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.0075ms.
+2023-11-12 16:44:48.750 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:48.750 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.9415ms
+2023-11-12 16:44:48.751 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.751 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 4.4042ms
+2023-11-12 16:44:48.947 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:48.948 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.949 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:48.949 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:48.950 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:48.951 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:48.952 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.952 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:48.952 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 377f579e-94b7-4c83-80ee-3f0c49edc4e9  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:48.953 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.0367ms.
+2023-11-12 16:44:48.954 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:48.954 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 5.3215ms
+2023-11-12 16:44:48.955 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:48.956 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 9.3108ms
+2023-11-12 16:44:49.125 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:49.125 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.125 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:49.126 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:49.126 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:49.127 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:49.127 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.127 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.127 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) a98736ad-1013-4b19-a8ef-a5f57e543b3c  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:49.128 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.739ms.
+2023-11-12 16:44:49.128 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:49.129 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.853ms
+2023-11-12 16:44:49.129 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.129 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 4.4056ms
+2023-11-12 16:44:49.284 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:49.285 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.287 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:49.288 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:49.289 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:49.290 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:49.290 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.291 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.291 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 2cf5de1b-6c1a-4dea-91cc-afdd78ab3217  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:49.292 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.987ms.
+2023-11-12 16:44:49.293 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:49.293 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 5.5914ms
+2023-11-12 16:44:49.294 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.294 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 10.5547ms
+2023-11-12 16:44:49.444 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:49.446 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.447 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:49.449 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:49.449 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:49.450 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:49.452 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.452 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.453 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (3 milliseconds) 8f14ef80-f7f1-4ce8-9fae-d87366676fff  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:49.454 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.3095ms.
+2023-11-12 16:44:49.456 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:49.457 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 8.7415ms
+2023-11-12 16:44:49.457 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.458 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 14.4486ms
+2023-11-12 16:44:49.606 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:49.608 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.608 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:49.609 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:49.610 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:49.610 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:49.611 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.612 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.612 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 9a6d7a9d-6b12-40a1-b8da-16f892b41936  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:49.614 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.9176ms.
+2023-11-12 16:44:49.615 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:49.616 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 7.5468ms
+2023-11-12 16:44:49.617 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.617 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 11.018ms
+2023-11-12 16:44:49.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:49.782 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.783 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:49.783 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:49.784 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:49.784 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:49.784 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.784 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.785 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 41992afd-575f-43d7-8bb1-abdd9a50bbd0  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:49.785 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.701ms.
+2023-11-12 16:44:49.785 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:49.786 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.5362ms
+2023-11-12 16:44:49.786 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.786 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 4.112ms
+2023-11-12 16:44:49.947 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:49.949 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.949 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:49.950 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:49.951 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:49.952 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:49.953 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.953 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:49.953 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 447fe022-430f-4b85-b476-370f6cf10721  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:49.954 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.0654ms.
+2023-11-12 16:44:49.954 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:49.954 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 4.5315ms
+2023-11-12 16:44:49.954 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:49.955 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 7.2662ms
+2023-11-12 16:44:50.117 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:50.119 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.119 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:50.121 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:50.123 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:50.123 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:50.124 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.124 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.125 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 4e7e07af-310c-4581-9e15-ec314e9e68b2  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:50.128 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6.6929ms.
+2023-11-12 16:44:50.129 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:50.131 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 10.8945ms
+2023-11-12 16:44:50.132 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.133 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 15.7033ms
+2023-11-12 16:44:50.301 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:50.303 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.304 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:50.307 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:50.308 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:50.308 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:50.309 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.309 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.310 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 37501c84-1f92-4231-979d-49e1c4cbe50e  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:50.311 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.7929ms.
+2023-11-12 16:44:50.312 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:50.312 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 6.5904ms
+2023-11-12 16:44:50.313 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.313 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 12.5833ms
+2023-11-12 16:44:50.464 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:50.464 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.465 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:50.465 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:50.465 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:50.466 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:50.466 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.466 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.466 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) cfe3a3a5-f1da-4aeb-be88-5d351fa0487d  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:50.467 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.6123ms.
+2023-11-12 16:44:50.467 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:50.467 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.5429ms
+2023-11-12 16:44:50.467 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.468 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 3.9688ms
+2023-11-12 16:44:50.632 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:50.632 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.632 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:50.633 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:50.633 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:50.633 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:50.634 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.634 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.634 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) a11788e3-9590-49f1-ab65-306e0532cad3  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:50.635 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.6539ms.
+2023-11-12 16:44:50.635 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:50.635 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.6793ms
+2023-11-12 16:44:50.636 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.636 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 4.21ms
+2023-11-12 16:44:50.801 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:50.803 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.803 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:50.804 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:50.805 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:50.806 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:50.807 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.807 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.808 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 4b1c9ab3-fe84-459e-9aae-e15b515209e1  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:50.809 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.0398ms.
+2023-11-12 16:44:50.810 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:50.810 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 6.2429ms
+2023-11-12 16:44:50.811 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.811 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 10.2078ms
+2023-11-12 16:44:50.990 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:50.992 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:50.993 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:50.995 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:50.996 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:50.996 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:50.998 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.998 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:50.999 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (3 milliseconds) 52dc81ed-d508-4b91-9096-950c43132a73  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:51.001 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.5887ms.
+2023-11-12 16:44:51.003 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:51.004 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 9.626ms
+2023-11-12 16:44:51.004 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.005 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 14.5281ms
+2023-11-12 16:44:51.160 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:51.161 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.162 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:51.163 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:51.164 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:51.164 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:51.165 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.166 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.166 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 6b63b21a-b37c-43cc-854b-a3cefe4d6138  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:51.167 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.9366ms.
+2023-11-12 16:44:51.168 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:51.169 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 6.4653ms
+2023-11-12 16:44:51.170 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.170 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 10.5303ms
+2023-11-12 16:44:51.319 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:51.321 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.321 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:51.322 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:51.323 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:51.323 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:51.324 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.324 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.325 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 9f3b5fdc-b388-4ff5-bea0-4822d15d7794  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:51.326 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.9733ms.
+2023-11-12 16:44:51.327 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:51.328 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 6.0169ms
+2023-11-12 16:44:51.329 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.329 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 9.8322ms
+2023-11-12 16:44:51.523 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:51.524 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.525 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:51.526 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:51.527 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:51.528 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:51.529 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.529 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.530 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 3c2d9972-30d8-4e87-98c3-0056962e67b7  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:51.533 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.9807ms.
+2023-11-12 16:44:51.534 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:51.534 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 8.7912ms
+2023-11-12 16:44:51.535 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.536 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 13.0209ms
+2023-11-12 16:44:51.687 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:51.688 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.689 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:51.690 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:51.691 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:51.692 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:51.693 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.693 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.694 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 20e86d7d-19ab-45d4-ae6b-a635e8d6e28d  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:51.695 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.3321ms.
+2023-11-12 16:44:51.696 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:51.697 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 7.1603ms
+2023-11-12 16:44:51.698 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.698 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 11.781ms
+2023-11-12 16:44:51.845 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:51.847 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.848 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:51.849 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:51.850 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:51.851 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:51.852 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.852 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:51.852 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) f9ca9718-20dc-479e-967c-2145e62c8332  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:51.856 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6.5561ms.
+2023-11-12 16:44:51.857 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:51.858 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 9.1345ms
+2023-11-12 16:44:51.859 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:51.859 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 13.9655ms
+2023-11-12 16:44:52.056 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:52.058 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:52.058 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:52.059 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:52.060 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:52.060 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:52.061 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:52.062 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:52.062 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 05595309-07be-4d16-b91b-1d6e099fb76e  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:52.063 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.6332ms.
+2023-11-12 16:44:52.064 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:52.065 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 5.9611ms
+2023-11-12 16:44:52.065 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:52.065 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 9.0931ms
+2023-11-12 16:44:52.198 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:52.200 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:52.201 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:52.201 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:52.202 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:52.202 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:52.203 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:52.203 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:52.204 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 799f8c16-b197-4c79-8a3b-faa713eb6fa4  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:52.205 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.8412ms.
+2023-11-12 16:44:52.205 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:52.206 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 5.1658ms
+2023-11-12 16:44:52.207 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:52.207 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 8.6935ms
+2023-11-12 16:44:52.344 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:44:52.347 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:52.348 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:44:52.349 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:44:52.350 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:44:52.351 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:44:52.352 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:52.352 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:44:52.352 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (2 milliseconds) 2e3dd8fe-479d-4d53-aaae-66d91b637d1c  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:44:52.354 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.8092ms.
+2023-11-12 16:44:52.356 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:44:52.357 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 7.5931ms
+2023-11-12 16:44:52.358 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:44:52.359 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 15.0958ms
+2023-11-12 16:45:21.215 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:21.216 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.217 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:21.218 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:21.219 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:21.219 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:21.221 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.221 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.222 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (3 milliseconds) aea6b22d-6c1d-4ac8-b5d9-8a57ff4b5e3c  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:21.224 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.1619ms.
+2023-11-12 16:45:21.224 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:21.225 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 7.3883ms
+2023-11-12 16:45:21.225 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.226 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 12.0161ms
+2023-11-12 16:45:21.358 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:21.359 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.360 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:21.361 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:21.362 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:21.363 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:21.363 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.363 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.364 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) f9226875-c984-4ea0-956f-a4479937a131  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:21.364 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.6886ms.
+2023-11-12 16:45:21.364 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:21.365 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 4.0133ms
+2023-11-12 16:45:21.365 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.365 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 6.8292ms
+2023-11-12 16:45:21.522 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:21.522 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.523 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:21.523 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:21.523 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:21.523 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:21.524 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.524 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.524 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 0387bb34-4d58-4d0b-b53a-2db0eced92a9  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:21.525 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.8563ms.
+2023-11-12 16:45:21.525 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:21.526 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.8978ms
+2023-11-12 16:45:21.526 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.526 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 4.2646ms
+2023-11-12 16:45:21.673 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:21.675 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.675 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:21.676 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:21.677 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:21.677 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:21.678 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.678 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.678 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 4e1d5b9a-7399-4543-b90a-325fe186def6  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:21.679 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.37ms.
+2023-11-12 16:45:21.679 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:21.680 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 3.8376ms
+2023-11-12 16:45:21.680 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.680 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 6.7489ms
+2023-11-12 16:45:21.814 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:21.815 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.815 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:21.815 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:21.816 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:21.816 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:21.816 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.816 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.817 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (0 milliseconds) 8f73a9f4-568b-4b2c-9c1d-fbcdd85795ac  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:21.817 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.4648ms.
+2023-11-12 16:45:21.817 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:21.818 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.2556ms
+2023-11-12 16:45:21.818 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.818 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 3.4343ms
+2023-11-12 16:45:21.976 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:21.976 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.976 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:21.977 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:21.977 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:21.977 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:21.978 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.978 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:21.978 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (1 milliseconds) 10f04adb-7f1e-4351-978d-42fbd5449c36  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:21.978 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.573ms.
+2023-11-12 16:45:21.979 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:21.979 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.3865ms
+2023-11-12 16:45:21.979 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:21.979 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 3.4558ms
+2023-11-12 16:45:22.102 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:22.102 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:22.102 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:22.102 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:22.103 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:22.103 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:22.103 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:22.103 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:22.103 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (0 milliseconds) 20f64df2-017b-4b61-be5a-c02f55cb7da0  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:22.104 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.469ms.
+2023-11-12 16:45:22.104 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:22.104 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.1657ms
+2023-11-12 16:45:22.104 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:22.105 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 3.1117ms
+2023-11-12 16:45:22.245 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7063/api/WeatherForecast - null null
+2023-11-12 16:45:22.246 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:22.246 +01:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(SemSnel.Portofolio.Application.WeatherForecasts.Features.Queries.Get.GetWeatherforecastsQuery) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:22.246 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:22.246 +01:00 [INF] Handling GetWeatherforecastsQuery for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:22.247 +01:00 [INF] Request GetWeatherforecastsQuery is authorized
+2023-11-12 16:45:22.247 +01:00 [INF] Cache hit for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:22.247 +01:00 [INF] Returning cached response for key GetWeatherforecastsQuery:1:10
+2023-11-12 16:45:22.247 +01:00 [INF] CleanArchitecture Request: GetWeatherforecastsQuery (0 milliseconds) 85674c56-6613-40d5-bf57-15d3ba78c2e7  {"Skip":1,"Take":10,"$type":"GetWeatherforecastsQuery"}
+2023-11-12 16:45:22.248 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.3642ms.
+2023-11-12 16:45:22.248 +01:00 [INF] Executing OkObjectResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Pagination.PaginatedList`1[[SemSnel.Portofolio.Application.WeatherForecasts.Dtos.WeatherForecastDto, Server.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-11-12 16:45:22.248 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation) in 2.1596ms
+2023-11-12 16:45:22.249 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Get (Server.Presentation)'
+2023-11-12 16:45:22.249 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7063/api/WeatherForecast - 200 null application/json; charset=utf-8; x-api-version=1.0 3.3746ms
+2023-11-12 16:45:27.163 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7063/api/WeatherForecast - application/json; x-api-version=1.0 64
+2023-11-12 16:45:27.166 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation)'
+2023-11-12 16:45:27.176 +01:00 [INF] Route matched with {action = "Create", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create.CreateWeatherForecastCommand) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:27.203 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-11-12 16:45:27.218 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation) in 40.6117ms
+2023-11-12 16:45:27.218 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation)'
+2023-11-12 16:45:27.219 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7063/api/WeatherForecast - 400 null application/problem+json; charset=utf-8 55.3015ms
+2023-11-12 16:45:35.045 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7063/api/WeatherForecast - application/json; x-api-version=1.0 71
+2023-11-12 16:45:35.046 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation)'
+2023-11-12 16:45:35.046 +01:00 [INF] Route matched with {action = "Create", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create.CreateWeatherForecastCommand) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:35.101 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__idempotencyKey_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedOn", "i"."Name", "i"."RequestBody", "i"."RequestHeaders", "i"."RequestId", "i"."ResponseBody", "i"."ResponseStatusCode"
+FROM "IdempotentRequests" AS "i"
+WHERE "i"."Id" = @__idempotencyKey_0
+LIMIT 1
+2023-11-12 16:45:35.103 +01:00 [INF] Executing action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation) - Validation state: "Valid"
+2023-11-12 16:45:35.116 +01:00 [INF] Handling CreateWeatherForecastCommand for user Anonymous at System.Func`1[System.DateTime]
+2023-11-12 16:45:35.119 +01:00 [INF] Request CreateWeatherForecastCommand is authorized
+2023-11-12 16:45:35.265 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (DbType = DateTime), @p2='?' (Size = 95), @p3='?' (DbType = DateTime), @p4='?' (Size = 33)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "DomainMessages" ("Id", "CreatedOn", "Data", "ProcessedOn", "Type")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-11-12 16:45:35.269 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Guid), @p5='?' (DbType = DateTime), @p6='?' (DbType = Guid), @p7='?' (DbType = DateTime), @p8='?' (Size = 5), @p9='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "WeatherForecasts" ("Id", "CreatedBy", "CreatedOn", "Date", "DeletedBy", "DeletedOn", "LastModifiedBy", "LastModifiedOn", "Summary", "TemperatureC")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2023-11-12 16:45:35.281 +01:00 [INF] CleanArchitecture Request: CreateWeatherForecastCommand (164 milliseconds) 7ac54f79-790d-4767-9e67-c8a71b404878  {"Date":"2023-11-12","TemperatureC":100,"Summary":{"IsSome":true,"IsNone":false,"Value":"Sunny","ValueOrNull":"Sunny","IsNull":false,"$type":"NoneOr`1"},"$type":"CreateWeatherForecastCommand"}
+2023-11-12 16:45:35.283 +01:00 [INF] Executed action method SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 179.2943ms.
+2023-11-12 16:45:35.305 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 72), @p4='?' (Size = 73), @p5='?' (Size = 22), @p6='?' (Size = 48), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "IdempotentRequests" ("Id", "CreatedOn", "Name", "RequestBody", "RequestHeaders", "RequestId", "ResponseBody", "ResponseStatusCode")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-11-12 16:45:35.307 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'SemSnel.Portofolio.Domain.Common.Monads.Result.Created`1[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2023-11-12 16:45:35.318 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation) in 271.4367ms
+2023-11-12 16:45:35.318 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation)'
+2023-11-12 16:45:35.319 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7063/api/WeatherForecast - 201 null application/json; charset=utf-8; x-api-version=1.0 274.2247ms
+2023-11-12 16:45:36.032 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7063/api/WeatherForecast - application/json; x-api-version=1.0 71
+2023-11-12 16:45:36.033 +01:00 [INF] Executing endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation)'
+2023-11-12 16:45:36.033 +01:00 [INF] Route matched with {action = "Create", controller = "WeatherForecast"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(SemSnel.Portofolio.Application.WeatherForecasts.Features.Commands.Create.CreateWeatherForecastCommand) on controller SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController (Server.Presentation).
+2023-11-12 16:45:36.044 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__idempotencyKey_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedOn", "i"."Name", "i"."RequestBody", "i"."RequestHeaders", "i"."RequestId", "i"."ResponseBody", "i"."ResponseStatusCode"
+FROM "IdempotentRequests" AS "i"
+WHERE "i"."Id" = @__idempotencyKey_0
+LIMIT 1
+2023-11-12 16:45:36.048 +01:00 [INF] Executing ContentResult with HTTP Response ContentType of application/json
+2023-11-12 16:45:36.051 +01:00 [INF] Executed action SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation) in 17.5836ms
+2023-11-12 16:45:36.052 +01:00 [INF] Executed endpoint 'SemSnel.Portofolio.Server.WeatherForecasts.v1.WeatherForecastController.Create (Server.Presentation)'
+2023-11-12 16:45:36.052 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7063/api/WeatherForecast - 201 48 application/json; x-api-version=1.0 20.3764ms
+2023-11-12 17:04:32.888 +01:00 [ERR] Unexpected exception in TimingPipeFlusher.FlushAsync.
+System.IO.IOException: The encryption operation failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (14): Bad address
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.WriteSingleChunk[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.WriteAsyncInternal[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.PipeWriterHelpers.TimingPipeFlusher.FlushAsync(MinDataRate minRate, Int64 count, IHttpOutputAborter outputAborter, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.Http2FrameWriter.WriteGoAwayAsync(Int32 lastStreamId, Http2ErrorCode errorCode)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.Http2Connection.UpdateConnectionState()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.Http2Connection.ProcessRequestsAsync[TContext](IHttpApplication`1 application)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext(Thread threadPoolThread)
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+   at System.Threading.PortableThreadPool.WorkerThread.WorkerThreadStart()
+   at System.Threading.Thread.StartCallback()
+--- End of stack trace from previous location ---
+   at System.Net.Security.SslStream.WriteAsyncInternal[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.PipeWriterHelpers.ConcurrentPipeWriter.FlushAsyncAwaited(ValueTask`1 flushTask, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.PipeWriterHelpers.TimingPipeFlusher.TimeFlushAsyncAwaited(ValueTask`1 pipeFlushTask, MinDataRate minRate, IHttpOutputAborter outputAborter, CancellationToken cancellationToken)
+2023-11-12 17:04:33.029 +01:00 [ERR] Unhandled exception while processing 0HMV3ILGA8EPJ.
+System.IO.IOException: The encryption operation failed, see inner exception.
+ ---> System.ComponentModel.Win32Exception (14): Bad address
+   --- End of inner exception stack trace ---
+   at System.Net.Security.SslStream.WriteSingleChunk[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.WriteAsyncInternal[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.IO.Pipelines.StreamPipeWriter.CompleteAsync(Exception exception)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at System.IO.Pipelines.StreamPipeWriter.CompleteAsync(Exception exception)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.DuplexPipeStreamAdapter`1.DisposeAsync()
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.DuplexPipeStreamAdapter`1.DisposeAsync()
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.ExecutionContextCallback(Object s)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext(Thread threadPoolThread)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext()
+   at System.Threading.Tasks.AwaitTaskContinuation.RunOrScheduleAction(IAsyncStateMachineBox box, Boolean allowInlining)
+   at System.Threading.Tasks.Task.RunContinuations(Object continuationObject)
+   at System.Threading.Tasks.Task`1.TrySetResult(TResult result)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(Task`1 task, TResult result)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.HttpConnection.ProcessRequestsAsync[TContext](IHttpApplication`1 httpApplication)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.ExecutionContextCallback(Object s)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext(Thread threadPoolThread)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext()
+   at System.Threading.Tasks.AwaitTaskContinuation.RunOrScheduleAction(IAsyncStateMachineBox box, Boolean allowInlining)
+   at System.Threading.Tasks.Task.RunContinuations(Object continuationObject)
+   at System.Threading.Tasks.Task`1.TrySetResult(TResult result)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(Task`1 task, TResult result)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.Http2Connection.ProcessRequestsAsync[TContext](IHttpApplication`1 application)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext(Thread threadPoolThread)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext()
+   at System.Threading.Tasks.AwaitTaskContinuation.RunOrScheduleAction(IAsyncStateMachineBox box, Boolean allowInlining)
+   at System.Threading.Tasks.Task.RunContinuations(Object continuationObject)
+   at System.Threading.Tasks.Task`1.TrySetResult(TResult result)
+   at System.Threading.Tasks.UnwrapPromise`1.TrySetFromTask(Task task, Boolean lookForOce)
+   at System.Threading.Tasks.UnwrapPromise`1.Invoke(Task completingTask)
+   at System.Threading.Tasks.Task.RunContinuations(Object continuationObject)
+   at System.Threading.Tasks.Task`1.TrySetResult(TResult result)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(Task`1 task, TResult result)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.Http2FrameWriter.WriteToOutputPipe()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.AsyncStateMachineBox`1.MoveNext(Thread threadPoolThread)
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+   at System.Threading.PortableThreadPool.WorkerThread.WorkerThreadStart()
+   at System.Threading.Thread.StartCallback()
+--- End of stack trace from previous location ---
+   at System.Net.Security.SslStream.WriteAsyncInternal[TIOAdapter](ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.IO.Pipelines.StreamPipeWriter.CompleteAsync(Exception exception)
+   at System.IO.Pipelines.StreamPipeWriter.CompleteAsync(Exception exception)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.DuplexPipeStreamAdapter`1.DisposeAsync()
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.KestrelConnection`1.ExecuteAsync()

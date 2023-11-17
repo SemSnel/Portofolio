@@ -1,0 +1,9 @@
+@using System.Reflection.Metadata.Ecma335
+<h3>MainPageLayout</h3>
+
+@ChildContent
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } 
+}

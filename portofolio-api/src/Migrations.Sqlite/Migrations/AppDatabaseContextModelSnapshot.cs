@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SemSnel.Portofolio.Infrastructure.Common.Persistence.Database;
+using SemSnel.Portofolio.Infrastructure;
 
 #nullable disable
 
@@ -17,45 +17,154 @@ namespace SemSnel.Portofolio.Migrations.Sqlite.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0-preview.6.23329.4");
 
-            modelBuilder.Entity("SemSnel.Portofolio.Domain.WeatherForecasts.WeatherForecast", b =>
+            modelBuilder.Entity("SemSnel.Portofolio.Domain.Contexts.WeatherForecasts.WeatherForecast", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Id");
 
                     b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedBy");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("CreatedOn");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Date");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("DeletedOn");
+
+                    b.Property<Guid?>("LastModifiedBy")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastModifiedBy");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("LastModifiedOn");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Summary");
+
+                    b.Property<int>("TemperatureC")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("TemperatureC");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WeatherForecasts", (string)null);
+                });
+
+            modelBuilder.Entity("SemSnel.Portofolio.Infrastructure.Common.Idempotency.Entities.IdempotentRequest", b =>
+                {
+                    b.Property<Guid>("Id")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("DeletedBy")
+                    b.Property<string>("RequestBody")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("DeletedOn")
+                    b.Property<string>("RequestHeaders")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid?>("LastModifiedBy")
+                    b.Property<string>("RequestId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("LastModifiedOn")
+                    b.Property<string>("ResponseBody")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Summary")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("TemperatureC")
+                    b.Property<int>("ResponseStatusCode")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeatherForecasts");
+                    b.ToTable("IdempotentRequests", "dbo");
+                });
+
+            modelBuilder.Entity("SemSnel.Portofolio.Infrastructure.Common.Persistence.Messages.Domain.Entities.DomainMessage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("ProcessedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DomainMessages", "dbo");
+                });
+
+            modelBuilder.Entity("SemSnel.Portofolio.Infrastructure.Common.Persistence.Messages.Inbox.Entities.InboxMessage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("ProcessedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InboxMessages", "dbo");
+                });
+
+            modelBuilder.Entity("SemSnel.Portofolio.Infrastructure.Common.Persistence.Messages.Outbox.OutboxMessage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("ProcessedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OutboxMessages", "dbo");
                 });
 #pragma warning restore 612, 618
         }
